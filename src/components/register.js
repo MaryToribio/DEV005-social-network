@@ -25,7 +25,12 @@ function register() {
   divTitleLogo.classList.add('divTitleLogo');
   const titleLogo = document.createElement('span');
   titleLogo.textContent = 'Senior Face';
-  divTitleLogo.append(titleLogo);
+  const divLogoRegister = document.createElement('div');
+  divLogoRegister.classList.add('divLogoRegister');
+  const imageIcono = document.createElement('img');
+  imageIcono.src = './img/iconoLogin.png';
+  divLogoRegister.append(imageIcono);
+  divTitleLogo.append(titleLogo, divLogoRegister);
   // Creación de contenedor de input
 
   const divContent = document.createElement('div');
@@ -81,5 +86,4 @@ function register() {
 
   return root;
 }
-
 export default register;
