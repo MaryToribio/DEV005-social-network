@@ -270,7 +270,6 @@
     }
 }
 
-
 /*maria*/
 /*papa*/
 .contenedor{     
@@ -446,46 +445,3 @@
     width:100px
       }
     }*/
-
-section{
-    background-color: #bfc7c4;
-    width: 1200px;
-    height: 582px;
-    display: inline-flex;
-}
-
-#divRight{
-    order: 2;
-    width: 600px;
-    height: 100%;
-    background-color: wheat;
-}
-
-#divLeft{
-    order: 1;
-    width: 600px;
-    height: 100%;
-}
-
-.imgLogin{
-    width: 600px;
-    height: 100%;
-
-}
-.spanSocialNetwrk{
-    position: absolute;
-    top: 69%;
-    left: 7.px;
-    background-color: rgb(248 162 25 / 52%);
-    color: #fff;
-    padding: 25px 174px;
-    font-size: 2;
-    font-size: 2.5rem;
-}
-
-.containerDiv {
-    background-color: rgb(12, 153, 52);
-    width: 45px;
-    height: 45px;
-}
-
