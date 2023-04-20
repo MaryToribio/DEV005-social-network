@@ -16,29 +16,43 @@ const firebaseConfig = {
   appId: '1:12593288068:web:f501c31c4928f03bc143d1',
 };
 
-
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-
 console.log('probandoString', app);
 
+const auth = getAuth();
 
-export const auth = getAuth();
-
-export const registerUser = (email, password) => {
+const registerUser = (email, password) => {
   console.log('datos: ', email, password);
 
   return createUserWithEmailAndPassword(auth, email, password);
 };
 
-registerUser('maria123@yopmail.com', 'caro123')
+/* registerUser(email, password)
   .then((res) => {
     console.log(res);
   })
   .catch((err) => {
     console.error(err);
-  });
+  }); */
 
 //  registrarRedSocial('caro@yopmail.com', 'maria123')
+
+const idemail = document.querySelector('.inputInsertCorreo');
+const idpassword = document.querySelector('.inputInsertPassword');
+const eventButton = document.querySelector('.buttonRegister');
+
+eventButton.addEventListener('click', () => {
+  registerUser(idemail.value, idpassword.value)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
+  console.log('console1', idemail.value);
+  console.log('console1', idpassword.value);
+});
+

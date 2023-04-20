@@ -5,6 +5,7 @@
 import login from './components/login.js';
 import register from './components/register.js';
 import error from './components/error.js';
+import seniorFace from './components/seniorFace.js';
 
 const root = document.getElementById('root');
 
@@ -12,6 +13,7 @@ const myRoutes = [
   { path: '/login', component: login },
   { path: '/register', component: register },
   { path: '/error', component: error },
+  { path: '/seniorFace', component: seniorFace },
 ];
 const defaultMyRoutes = '/';
 

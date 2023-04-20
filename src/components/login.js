@@ -100,6 +100,9 @@ function login() {
   divLeft.append(imgLogin);
 
   // creacion de eventos
+  buttonRegister.addEventListener('click', () => {
+    navigateTo('/register');
+  });
   buttonRegister.addEventListener('click', () => { navigateTo('/register'); });
 
 
@@ -161,7 +164,7 @@ function login() {
   divLeft.append(imgLogin);
 
 
-  return section;
+  return root;
 }
 
 export default login;

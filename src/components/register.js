@@ -9,7 +9,9 @@ function register() {
   const divTitleRegister = document.createElement('div');
   divTitleRegister.classList.add('divTitleRegister');
   divTitleRegister.append(titleRegister);
+  // Creación de button register
   const buttonRegister = document.createElement('button');
+  buttonRegister.classList.add('buttonRegister');
   buttonRegister.textContent = 'Guardar y crear';
 
   // Creación de containerLeft
@@ -51,6 +53,8 @@ function register() {
   const spanInsertCorreo = document.createElement('span');
   spanInsertCorreo.textContent = 'INGRESAR CORREO';
   const inputInsertCorreo = document.createElement('input');
+  inputInsertCorreo.classList.add('inputInsertCorreo');
+  inputInsertCorreo.setAttribute('id', 'inputInsertCorreo');
   divInputCorreo.append(spanInsertCorreo, inputInsertCorreo);
 
   // Creación de input para insertar contraseña
@@ -60,6 +64,7 @@ function register() {
   const spanInsertPassword = document.createElement('span');
   spanInsertPassword.textContent = 'INGRESAR CONTRASEÑA';
   const inputInsertPassword = document.createElement('input');
+  inputInsertPassword.classList.add('inputInsertPassword');
   divInputPassword.append(spanInsertPassword, inputInsertPassword);
 
   // Creación de input para insertar contraseña nuevamente
@@ -83,6 +88,21 @@ function register() {
   containerLeft.append(divContainerPhrase, divTitleLogo);
 
   root.append(containerLeft, containerRight);
+
+  // Funcion para listener de botton registrar
+  /* function sendRegister(registerUser) {
+    console.log('prueba0', 'funciona?s');
+    const insertCorreo = inputInsertCorreo.value;
+    const insertPassword = inputInsertPassword.value;
+    console.log('input', insertPassword);
+
+    registerUser(insertCorreo, insertPassword);
+  }
+  // Creación de eventos (listener)
+
+  buttonRegister.addEventListener('click', sendRegister); */
+
+  // Creación de funciones para guardado de datos
 
   return root;
 }
