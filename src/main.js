@@ -15,7 +15,7 @@ const myRoutes = [
   { path: '/error', component: error },
   { path: '/seniorFace', component: seniorFace },
 ];
-const defaultMyRoutes = '/';
+const defaultMyRoutes = '/login';
 
 function navigateTo(hash) {
   const myRouterFind = myRoutes.find((itemRouter) => itemRouter.path === hash);
@@ -30,7 +30,11 @@ function navigateTo(hash) {
     if (root.firstChild) {
       root.removeChild(root.firstChild);
     }
-    root.appendChild(myRouterFind.component(navigateTo));
+    try {
+      root.appendChild(myRouterFind.component(navigateTo));
+    } catch (ex) {
+      console.log('prueba1', ex);
+    }
   } else {
     navigateTo('/error');
   }

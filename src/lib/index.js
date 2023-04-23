@@ -1,6 +1,7 @@
 // aqui exportaras las funciones que necesites
+/*
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js';
-import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js';
 
 // import register from '../components/register';
 // TODO: Add SDKs for Firebase products that you want to use
@@ -29,6 +30,8 @@ const registerUser = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password);
 };
 
+const loginUser =
+*/
 /* registerUser(email, password)
   .then((res) => {
     console.log(res);
@@ -38,7 +41,7 @@ const registerUser = (email, password) => {
   }); */
 
 //  registrarRedSocial('caro@yopmail.com', 'maria123')
-
+/*
 const idemail = document.querySelector('.inputInsertCorreo');
 const idpassword = document.querySelector('.inputInsertPassword');
 const eventButton = document.querySelector('.buttonRegister');
@@ -55,4 +58,4 @@ eventButton.addEventListener('click', () => {
   console.log('console1', idemail.value);
   console.log('console1', idpassword.value);
 });
-
+*/
