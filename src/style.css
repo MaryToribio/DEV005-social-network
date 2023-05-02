@@ -9,7 +9,7 @@
         background-color: white;
     }
 
-    #root {
+    .containerSection, .containerLogin {
         width: 100%;
         height: 100%;
     }
@@ -18,9 +18,11 @@
         display: none;
     }
 
-    .containerRight {
-        height: 100%;
-        font-family:'Roboto Flex', sans-serif;
+    .containerRight, .divRaight {
+        width: 80%;
+        height: 90%;
+        
+        font-family: 'Roboto Flex', sans-serif;
         padding: 50px;
     }
 
@@ -31,13 +33,16 @@
         text-align: center;
         padding: 60px;
         font-size: 2em;
-        font-family:'Roboto Flex', sans-serif;
+        font-family: 'Roboto Flex', sans-serif;
         font-size: 2.8em;
         font-weight: 700;
-        color: rgb(39, 37, 33);  
-        box-shadow: 10px 0px 20px 0px rgb(196, 195, 194);  
+        color: rgb(39, 37, 33);
+        box-shadow: 10px 0px 20px 0px rgb(196, 195, 194);
+      
+       
     }
-    .divLogoRegister{
+
+    .divLogoRegister {
         width: 100px;
         height: 100px;
         background-color: rgb(27, 24, 19);
@@ -45,72 +50,212 @@
         border: 5px solid rgb(243, 238, 238);
         margin: auto;
         margin-top: 15px;
-         
     }
-    .divLogoRegister img{
+
+    .divLogoRegister img {
         width: 80px;
         height: 80px;
         filter: invert(.6);
+     
     }
 
 
-    .divContent {
-       
-        margin: auto;
-        margin-top: 40px;
-    }
-    .divInput{
-        width: 280px;
+    .formRegister {
+        list-style: none;
+        margin-top: 45px;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
         margin:auto;
-        margin-top: 20px;
-        
- 
+        margin-top: 40px;
+        margin-left: -20px;
+      
     }
 
-    .divInput input {
+    .listInput {
+        width: 280px;
+        margin: auto;
+        margin-bottom: 25px;
+        list-style: none;
+     
+    }
+
+    .listInput input {
         width: 280px;
         height: 60px;
         border-radius: 10px;
-        border:.5px solid rgb(227, 226, 226);
+        border: .5px solid rgb(227, 226, 226);
         box-shadow: 0px 0px 10px 0px rgb(231, 230, 230);
         color: rgb(93, 92, 92);
         font-size: 1.2em;
-        padding: 20px;
-        margin-top: 5px;
+        padding: 0px 20px 0px 20px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+
     }
-    .divInput span{
-        font-weight: 500;
-        color: rgb(136, 135, 135);
+    .listInput small{
+        font-size: 1em;
+        color: rgb(193, 36, 36);
+        font-weight: 900;   
     }
-    .divTitleRegister{
-        margin-top: 25px;
+
+    .listInput label {
+        font-weight: 700;
+        color: rgb(80, 79, 79);
+    }
+    .listInput ::placeholder{
+        color: rgb(189, 176, 176);
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight: 100;
+        font-size: 1em;
+    }
+
+    .listInput input:focus {
+        border: 2px solid #e39f216f;
+        outline: none;
+        box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+    }
+
+    .listInput.error input {
+        border: 2px solid rgba(188, 52, 52, 0.856);
+        box-shadow: 0px 0px 10px rgba(210, 118, 118, 0.4);
+    }
+    .listInput.error2 input {
+        border: 2px solid rgba(188, 52, 52, 0.856);
+        box-shadow: 0px 0px 10px rgba(210, 118, 118, 0.4);
+    }
+
+    .listInput.success input {
+        border: 2px solid rgb(115, 215, 27);
+        box-shadow: 0px 0px 10px rgba(160, 228, 58, 0.4);
+        
+    }
+
+    .divTitleRegister {
+        margin-top: 30px;
         text-align: center;
         font-size: 2.2em;
         font-weight: 500;
         color: rgb(101, 101, 100);
     }
-    .divContent button{
+
+     
+    .buttonRegister {
+       
         width: 280px;
         height: 60px;
-        border-radius: 10px;
-        margin: 40px 0px 0px 15px;
         background-color: rgb(250, 188, 89);
         border-radius: 10px;
         border: 0px transparent;
-        font-size: 1.5em;
-        font-weight: 700;
+        font-size: 1.1em;
         box-shadow: 0px 0px 10px 1px rgb(112, 91, 38);
-        color: rgb(33, 31, 31);
-        cursor: pointer;
+        color: rgb(63, 63, 62);
+        z-index: 20;
+        font-weight: 600;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 5px;
+        margin-left: 25px;
+      
     }
-    .divContent button:hover {
+     
+    .buttonRegisterGoogle {
+        width: 280px;
+        height: 60px;
+        background: rgb(254, 244, 218);
+        box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
+        font-size: 1.1em;
+        border: 1px solid rgb(230, 200, 130);
+        color: rgb(79, 79, 79);
+        position: absolute;
+        z-index: 20;
+        border-radius: 10px;
+        text-align: end;
+        font-weight: 600;
+        padding-right: 20px;
+        margin-bottom: 5px;
+        margin-left: 25px;
+      
+       
+    }
+    .buttonRegisterGoogle img{
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: 20px;
+        top:8px;
+
+    }
+
+    .formRegister button:hover {
+        background-color: rgb(90, 71, 57);
+        color: rgb(237, 231, 224);
+        box-shadow: 0px 0px 20px 1px rgb(112, 91, 38);
+        transition: 1s;
+    }
+    .containerLineDivide{
+       
+       
+       margin: auto;
+       margin-top:20px;
+       margin-bottom: 20px;
+       
+    }
+    .lineDivide{
+        width: 250px;
+        height: 20px;
+        position: relative;
+    }
+    .lineDivide::after, .lineDivide::before{
+        content: '';
+        position: absolute;
+        margin: auto;
+        height: 1px;
+        background: rgb(217, 215, 215);
+        width: 45%;
+        top:45%;
+    }
+    .lineDivide::after{
+       left: 0px; 
+    }
+    .lineDivide::before{
+        right: 0px; 
+     }
+     .circle {
+        width: 15px;
+        height: 15px;
+        border:1px solid rgb(172, 170, 170);
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        margin: auto;
+        border-radius: 50%;
+        
+        
+
+     }
+
+    .formRegister button:hover {
         background-color: rgb(42, 31, 23);
         color: rgb(237, 231, 224);
         box-shadow: 0px 0px 20px 1px rgb(39, 39, 37);
         transition: .5s;
-        width: 290px;
-        height: 70px;
-        margin: 40px 0px 0px 10px;
+     
+       
+    }
+    .emailInvalid{
+        width: 250px;
+        margin: auto;
+        margin-left:   40px;
+        margin-top: 70px;
+        position: absolute;
+        z-index: 10;
+        text-align: center;
+        color: rgb(205, 49, 49);
+        font-weight: 600;
+     
+      
     }
 
 }
@@ -118,34 +263,27 @@
 @media (min-width:500px) {
     body {
         background-image: linear-gradient(rgba(68, 59, 20, 0.75), rgba(245, 244, 240, 0.664)), url("./img/fondo0.jpg");
-    background-size: 2000px 1000px;
-    padding: 50px;
+        background-size: 2000px 1000px;
+        padding: 50px;
     }
 
-    #root {
-
+    .containerSection, .containerLogin {
         width: 1200px;
-        height:750px;
+        height: 750px;
         margin: auto;
-       
-        
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
         border-radius: 20px 0px 20px 0px;
         box-shadow: 0px 0px 25px 1px rgb(24, 23, 23);
-
     }
 
-    .containerLeft,
-    .containerRight {
+    .containerLeft, .containerRight, .divRight, .divLeft {
         width: 600px;
         height: 750px;
-
-
     }
 
-    .containerLeft {
+    .containerLeft, .divLeft {
         border-radius: 20px 0px 0px 0px;
         font-family: 'Amatic SC', cursive;
         background-color: rgb(242, 218, 173);
@@ -154,11 +292,10 @@
         font-family: 'Amatic SC', cursive;
         position: relative;
     }
-    .divLogoRegister{
-        display: none;
-    }
 
-    .containerRight {
+    
+
+    .containerRight, .divRight {
         border-radius: 0px 0px 20px 0px;
         background-color: rgb(255, 255, 255);
         padding-top: 50px;
@@ -167,65 +304,184 @@
 
     }
 
-    .divContent {
+    .formRegister, .formLogin {
         width: 400px;
         height: 550px;
-
         margin: auto;
-        margin-top: 50px;
+        margin-top: 60px;
+        list-style: none;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        
 
     }
 
-    .divInput {
+    .listInput {
         width: 380px;
         height: 90px;
-
         margin: auto;
-        margin-top: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;       
     }
+    
 
-    .divInput input {
+    .listInput input {
         width: 380px;
         height: 60px;
         margin: auto;
         border-radius: 10px;
         border: 1px solid rgb(248, 248, 248);
         box-shadow: 0px 0px 5px 0px rgb(194, 194, 194);
-        padding-left: 20px;
+        padding: 0px 20px 0px 20px;
         background-color: rgba(255, 255, 255, 0.709);
-        margin-top: 5px;
+        margin-top: 10px;
         font-size: 1.3em;
         color: rgb(91, 88, 88);
+        margin-bottom: 3px;
+    }
+    .listInput small{
+        font-size: 1.2em;
+        color: rgb(193, 36, 36);
+        font-weight: 900;   
+    }
+    .listInput ::placeholder{
+        color: rgb(189, 176, 176);
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight: 100;
+        font-size: 1em;
     }
 
-    .divInput span {
+    .listInput input:focus {
+        border: 3px solid #e39f216f;
+        outline: none;
+        box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+    }
+
+    .listInput.error input {
+        border: 3px solid rgba(188, 52, 52, 0.856);
+        box-shadow: 0px 0px 10px rgba(210, 118, 118, 0.4);
+
+    }
+    .listInput.error2 input {
+        border: 3px solid rgba(188, 52, 52, 0.856);
+        box-shadow: 0px 0px 10px rgba(210, 118, 118, 0.4);
+        font-size: 1.2em;
+        color: rgb(193, 36, 36);
+        font-weight: 900; 
+    }
+
+    .listInput.success input {
+        border: 2px solid rgb(115, 215, 27);
+        box-shadow: 0px 0px 10px rgba(160, 228, 58, 0.4);
+        
+    }
+
+    .listInput label {
         font-size: 1.3em;
-        color: rgb(84, 82, 82);
-        font-weight: 500;
+        font-weight: 700;
+        color: rgb(80, 79, 79);
     }
 
-    .divContent button {
+    .buttonRegister {
         width: 380px;
-        height: 55px;
+        height: 65px;
         background-color: rgb(250, 188, 89);
-        margin: 50px 0px 0px 10px;
         border-radius: 10px;
         border: 0px transparent;
         font-size: 1.5em;
         box-shadow: 0px 0px 10px 1px rgb(112, 91, 38);
-        color: rgb(33, 31, 31);
+        color: rgb(63, 63, 62);
+        z-index: 20;
+        font-weight: 600;
+        margin: auto;
+        margin-top: 40px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        
+    }
+    .listButtonRegisterGoogle{
+        width: 380px;
+        height: 65px;
+        margin-top: 0px;
+        margin-left: 10px;
+        margin-bottom: 20px; 
+    }
+    .buttonRegisterGoogle {
+        width: 380px;
+        height: 65px;
+        background: rgb(254, 244, 218);
+        box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
+        font-size: 1.5em;
+        border: 1px solid rgb(230, 200, 130);
+        color: rgb(79, 79, 79);
         position: absolute;
         z-index: 20;
+        border-radius: 10px;
+        text-align: end;
+        font-weight: 600;
+        padding-right: 30px;
+       
+    }
+    .buttonRegisterGoogle img{
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 20px;
+        top:8px;
+
     }
 
-    .divContent button:hover {
-        background-color: rgb(42, 31, 23);
+    .formRegister button:hover {
+        background-color: rgb(90, 71, 57);
         color: rgb(237, 231, 224);
         box-shadow: 0px 0px 20px 1px rgb(112, 91, 38);
         transition: 1s;
     }
+    .containerLineDivide{
+       
+       
+       margin: auto;
+       margin-top: 10px;
+       margin-bottom: 10px;
+       
+    }
+    .lineDivide{
+        width: 380px;
+        height: 20px;
+        position: relative;
+    }
+    .lineDivide::after, .lineDivide::before{
+        content: '';
+        position: absolute;
+        margin: auto;
+        height: 1px;
+        background: rgb(217, 215, 215);
+        width: 45%;
+        top:45%;
+    }
+    .lineDivide::after{
+       left: 0px; 
+    }
+    .lineDivide::before{
+        right: 0px; 
+     }
+     .circle {
+        width: 15px;
+        height: 15px;
+        border:1px solid rgb(172, 170, 170);
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        margin: auto;
+        border-radius: 50%;
+        
+        
 
-    .titleRegister {
+     }
+
+    .titleRegister, .h2Login{
         margin-left: 180px;
         margin-bottom: 100px;
         font-size: 3em;
@@ -235,7 +491,6 @@
 
     .divContainerPhrase {
         margin: auto;
-
         width: 500px;
         height: 200px;
 
@@ -247,10 +502,9 @@
         font-weight: 500;
     }
 
-    .divTitleLogo {
+    .divTitleLogo .divLogo{
         width: 600px;
         height: 180px;
-
         position: absolute;
         bottom: 0px;
         background-color: rgba(246, 210, 101, 0.862);
@@ -265,183 +519,90 @@
         font-family: 'Cabin Condensed', sans-serif;
         font-size: 5em;
         color: rgb(82, 68, 46);
-        text-shadow: 0px 3px 5px  rgba(63, 63, 63, 0.953);
-         
+        text-shadow: 0px 3px 5px rgba(63, 63, 63, 0.953);
+
     }
-}
-
-/*maria*/
-/*papa*/
-.contenedor{     
-    display: flex;
-    justify-content: center; /* Centra horizontalmente los elementos */
-    align-items: center; /* Centra verticalmente los elementos */
-     /* Altura del contenedor */
-    
-    }  
-
-
-/*hijo*/
-.contenedorLr{     
-    display: flex;
-    justify-content: center;
-    align-items: center;   
-    width: 1200px;
-    height: 750px;
-    border-radius: 30px;
-    background-color: black;
-    box-shadow: 0px 0px 25px 1px rgb(24, 23, 23);
-    font-family:'Assistant', sans-serif;
-  }
-
-.divRaight{
-  background-color: #eddbc8;
-  border-top-left-radius: 0px;
-  border-bottom-right-radius: 30px;
-  float: right;
-  width: 600px;
-  height: 750px;
-
-}
-
-.divLeft{
-  float: left;
-  background-color: #7d7e48;
-  width: 600px;
-  height: 750px;
-  border-top-left-radius: 30px;
-  border-bottom-right-radius: 0px;
-  position: relative;
-
-}
-
-.imgLogin {
-    width: 100%;
-    height: 100%;
-    border-top-left-radius: 30px;
-    border-bottom-right-radius: 0px;
-}
-
-
-
-.divSocialNetword {
-    position: absolute;
-    bottom: 100px;
-    font-size: 60px;
-    background-color: #d2dbdbd7;
-    font-size: 60px;
-    padding: auto;
-    background-color: #c476158f;
-    width: 600px;
-    height: 106px;
-    text-align: -webkit-center;
-    margin-top: -106px;
-    line-height: 93px;
-    color: white;
-}
-
-.buttonClassLogin{
-    width: 360px;
-    height: 50px;
-    background-color: rgb(248, 162, 25);
-    border-radius: 10px;
-    font-size: 1.5em;
-    box-shadow: 0px 0px 10px 1px rgb(112, 91, 38);
-    color: rgb(33, 31, 31);
-    font-weight: 23px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    background-color: rgb(250, 188, 89);
-    border: 0px transparent;
-    box-shadow: 0px 0px 10px 1px rgb(112, 91, 38);
-}
-.buttonClassLogin:hover{
-    background-color: rgb(42, 31, 23);
-    color: rgb(237, 231, 224);
-    box-shadow: 0px 0px 20px 1px rgb(112, 91, 38);
-    transition: .5s;  
-}
-
-.loginDiv{
-    margin: 20px;
-    padding: 20px;
-}
-
-.loginTitle {
  
-    font-size: 3em;
-    margin-left: 150px;
-    margin-top: 50px;
-    font-size: 3em;
-    color: rgb(67, 60, 50);
-  
+
+    .divLogoRegister  {
+        width: 80px;
+        height: 80px;
+        background-color: rgb(39, 35, 35);
+        border-radius: 50px;
+        border: 4px solid rgb(244, 174, 94);
+        margin-top: -580px;
+        position: absolute;
+        right: -345px;
+        padding: 6px;
+      
+    }
+
+    .divLogoRegister img {
+        width: 60px;
+        height: 60px;
+        filter: invert(.6);
+        
+    }
+    .h2Login{
+       
+        margin-bottom: 0px;
+        font-size: 3em;
+        color: rgb(67, 60, 50);
+        margin-left: 150px;
+       
+
+    }
+    .divLogo{
+        width: 80px;
+        height: 80px;
+        background-color: rgb(39, 35, 35);
+        border-radius: 50px;
+        border: 4px solid rgb(244, 174, 94);
+        margin: auto;
+       
+        
+      
+        
+      
+    }
+    .divLogo img{
+        width: 60px;
+        height: 60px;
+        filter: invert(.6);
+        margin-left: 6px;
+    }
+     .formLogin {
+        width: 400px;
+        height: 550px;
+        margin: auto;
+        margin-top: 0px;
+        list-style: none;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+    }
+    .emailInvalid{
+        width: 450px;
+        margin: auto;
+        margin-top: 55px;
+        padding: 5px;
+        margin-left:  -25px;
+        position: absolute;
+        z-index: 10;
+        text-align: center;
+        color: rgb(205, 49, 49);
+    }
+    .divLeft {
+        padding: 0px;
+    }
+
+    .imgLogin{
+        width: 600px;
+        height: 750px;
+        border-radius: 20px 0px 0px 0px;
+      
+    }
+
+
+
 }
-
-
-.loginDiv{
-    width: 400px;
-    height: 120px;
-    margin:auto;
-    margin-bottom: 20px;
-  
-  
-}
-
-.inputClassLogin{
-    width: 360px;
-    height: 70px;
-    margin:auto;
-    border-radius: 10px;
-    border:1px transparent  ;
-    box-shadow: 0px 0px 5px 0px rgb(194, 194, 194);
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.709);
-    margin-top:5px;
-    font-size: 1.3em;
-    color: rgb(91, 88, 88);
-
-}
-
-.containerDiv{
-    width: 400px;
-    height: 550px;
-    font-size: 1.3em;
-    margin: auto;
-    margin-top: 20px;
-  
-}
-
-.buttonClass{
-    margin: auto;
-    margin-top: 10px;
-
-}
-.divAsk{
-    height: 50px;
-    text-align: center;
-}
-.divAsk span{
-    font-size:.8em;
-    font-weight: 600;
- }
- .divLogo{
-    width: 100px;
-    height: 100px;
-    background-color: black;
-    border-radius: 50px;
-    margin: auto;
- }
-
- .divLogo img{
-    width: 90px;
-    height: 90px;
-    text-align: center;
-    filter: invert(10);
-    margin-left: 7px;
- }
-
-/*@media (max-width:500px) {
-    img.imgLogin {
-    width:100px
-      }
-    }*/

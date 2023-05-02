@@ -1,5 +1,10 @@
-function register() {
-  const root = document.getElementById('root');
+import { registerUser, googleProvider, signInWithPopupGoogle } from '../lib/index';
+
+export function register(navigateTo) {
+  // Contenedor padre
+  const containerSection = document.createElement('section');
+  containerSection.classList.add('containerSection');
+
   // Creación de containerRight
   const containerRight = document.createElement('section');
   containerRight.classList.add('containerRight');
@@ -9,10 +14,74 @@ function register() {
   const divTitleRegister = document.createElement('div');
   divTitleRegister.classList.add('divTitleRegister');
   divTitleRegister.append(titleRegister);
-  // Creación de button register
+
+  // Creación de formulario
+  const formRegister = document.createElement('form');
+  formRegister.classList.add('formRegister');
+
+  // Input para insertar correo
+  const listInputCorreo = document.createElement('li');
+  listInputCorreo.classList.add('listInput');
+  const labelCorreo = document.createElement('label');
+  labelCorreo.textContent = 'INSERTAR CORREO ELECTRÓNICO';
+  const inputInsertCorreo = document.createElement('input');
+  inputInsertCorreo.name = 'correo';
+  inputInsertCorreo.placeholder = 'another@example.com';
+  const errorMessageEmail = document.createElement('small');
+  errorMessageEmail.textContent = '';
+  listInputCorreo.append(labelCorreo, inputInsertCorreo, errorMessageEmail);
+
+  // Input para insertar Password
+
+  const listInputPassword = document.createElement('li');
+  listInputPassword.classList.add('listInput');
+  const labelPassword = document.createElement('label');
+  labelPassword.textContent = 'INSERTAR CONTRASEÑA';
+  const inputInsertPassword = document.createElement('input');
+  inputInsertPassword.name = 'password';
+  inputInsertPassword.placeholder = 'mínimo 6 dígitos';
+  const errorMessagePassword = document.createElement('small');
+  errorMessagePassword.textContent = '';
+  listInputPassword.append(labelPassword, inputInsertPassword, errorMessagePassword);
+
+  // Boton de "Registrar y guardar"
+  const listButtonRegister = document.createElement('li');
   const buttonRegister = document.createElement('button');
   buttonRegister.classList.add('buttonRegister');
-  buttonRegister.textContent = 'Guardar y crear';
+  buttonRegister.textContent = 'Guardar y Registrar';
+  buttonRegister.type = 'submit';
+  listButtonRegister.append(buttonRegister);
+
+  // Boton de "Registrar con Google"
+  const listButtonRegisterGoogle = document.createElement('li');
+  listButtonRegisterGoogle.classList.add('listButtonRegisterGoogle');
+  const buttonRegisterGoogle = document.createElement('button');
+  buttonRegisterGoogle.classList.add('buttonRegisterGoogle');
+  buttonRegisterGoogle.textContent = 'Regístrate con Google';
+  listButtonRegisterGoogle.append(buttonRegisterGoogle);
+  const logoGoogle = document.createElement('img');
+  logoGoogle.src = './img/logoGoogle.png';
+  buttonRegisterGoogle.append(logoGoogle);
+
+  // Input de linea separadora
+  const containerLineDivide = document.createElement('div');
+  containerLineDivide.classList.add('containerLineDivide');
+  const lineDivide = document.createElement('div');
+  lineDivide.classList.add('lineDivide');
+  const circle = document.createElement('div');
+  circle.classList.add('circle');
+  lineDivide.append(circle);
+  containerLineDivide.append(lineDivide);
+
+  // Insertar listas en formulario "formRegister"
+
+  formRegister.append(
+    listInputCorreo,
+    listInputPassword,
+    listButtonRegister,
+    containerLineDivide,
+    listButtonRegisterGoogle,
+  );
 
   // Creación de containerLeft
   const containerLeft = document.createElement('section');
@@ -33,77 +102,120 @@ function register() {
   imageIcono.src = './img/iconoLogin.png';
   divLogoRegister.append(imageIcono);
   divTitleLogo.append(titleLogo, divLogoRegister);
-  // Creación de contenedor de input
 
-  const divContent = document.createElement('div');
-  divContent.classList.add('divContent');
-
-  // Creación de input para insertar nombre
-
-  const divInputName = document.createElement('div');
-  divInputName.classList.add('divInput');
-  const spanInsertName = document.createElement('span');
-  spanInsertName.textContent = 'INGRESAR NOMBRE';
-  const inputInsertName = document.createElement('input');
-  divInputName.append(spanInsertName, inputInsertName);
-
-  // Creación de input para insertar correo
-  const divInputCorreo = document.createElement('div');
-  divInputCorreo.classList.add('divInput');
-  const spanInsertCorreo = document.createElement('span');
-  spanInsertCorreo.textContent = 'INGRESAR CORREO';
-  const inputInsertCorreo = document.createElement('input');
-  inputInsertCorreo.classList.add('inputInsertCorreo');
-  inputInsertCorreo.setAttribute('id', 'inputInsertCorreo');
-  divInputCorreo.append(spanInsertCorreo, inputInsertCorreo);
-
-  // Creación de input para insertar contraseña
-
-  const divInputPassword = document.createElement('div');
-  divInputPassword.classList.add('divInput');
-  const spanInsertPassword = document.createElement('span');
-  spanInsertPassword.textContent = 'INGRESAR CONTRASEÑA';
-  const inputInsertPassword = document.createElement('input');
-  inputInsertPassword.classList.add('inputInsertPassword');
-  divInputPassword.append(spanInsertPassword, inputInsertPassword);
-
-  // Creación de input para insertar contraseña nuevamente
-  const divInputAgainPassword = document.createElement('div');
-  divInputAgainPassword.classList.add('divInput');
-  const spanInsertAgainPassword = document.createElement('span');
-  spanInsertAgainPassword.textContent = 'INGRESE OTRA VEZ SU CONTRASEÑA';
-  const inputInsertAgainPassword = document.createElement('input');
-  divInputAgainPassword.append(spanInsertAgainPassword, inputInsertAgainPassword);
-
-  divContent.append(
-    divInputName,
-    divInputCorreo,
-    divInputPassword,
-    divInputAgainPassword,
-    buttonRegister,
-  );
   // ContainerRight
-  containerRight.append(divTitleRegister, divContent);
+  containerRight.append(divTitleRegister, formRegister);
   // ContainerLeft
   containerLeft.append(divContainerPhrase, divTitleLogo);
 
-  root.append(containerLeft, containerRight);
+  containerSection.append(containerLeft, containerRight);
 
-  // Funcion para listener de botton registrar
-  /* function sendRegister(registerUser) {
-    console.log('prueba0', 'funciona?s');
-    const insertCorreo = inputInsertCorreo.value;
-    const insertPassword = inputInsertPassword.value;
-    console.log('input', insertPassword);
+  // //=======================================================================================//
+  // Validación de inputs
 
-    registerUser(insertCorreo, insertPassword);
+  const listInputs = [inputInsertCorreo, inputInsertPassword];
+  console.log('prueba 0', listInputs);
+
+  // Validación de input vacio - funcion para mostrar correcto
+  function errorInput(input, messageError) {
+    const listInput = input.parentElement;
+    listInput.className = 'listInput error';
+    const small = listInput.querySelector('small');
+    listInput.classList.add('error');
+    small.innerText = messageError;
   }
-  // Creación de eventos (listener)
 
-  buttonRegister.addEventListener('click', sendRegister); */
+  function succesInput(input) {
+    const listInput = input.parentElement;
+    listInput.classList.add('success');
+    listInput.querySelector('small').innerText = '';
+  }
+  function cleanInputs(input) {
+    const listInput = input.parentElement;
+    listInput.classList.remove('success');
+    listInput.classList.remove('error');
+  }
 
-  // Creación de funciones para guardado de datos
+  // Funcion de validar direccionar a campos
+  function validInputs(e) {
+    console.log(e.target.name);
+    if (e.target.name === 'correo') {
+      const validCorreo = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
-  return root;
+      if (inputInsertCorreo.value === '') {
+        errorInput(inputInsertCorreo, 'El campo está vacío');
+        console.log('nosehixo');
+      } else if (validCorreo.test(inputInsertCorreo.value) === false) {
+        console.log('nosepaso');
+        errorInput(inputInsertCorreo, 'El campo debe ser llenado correctamente');
+      } else {
+        console.log('done', 'done');
+        succesInput(inputInsertCorreo);
+      }
+    }
+    // errorInput(inputInsertCorreo, 'El campo debe ser llenado');
+    if (e.target.name === 'password') {
+      const validPassword = /^.{6,12}$/;
+      if (inputInsertPassword.value === '') {
+        errorInput(inputInsertPassword, 'El campo debe contener al menos 6 dígitos');
+      } else if (validPassword.test(inputInsertPassword.value) === true) {
+        succesInput(inputInsertPassword);
+      }
+    }
+    return true;
+  }
+
+  // Evento para cada input
+  listInputs.forEach((input) => {
+    input.addEventListener('keyup', validInputs);
+    input.addEventListener('blur', validInputs);
+  });
+
+  formRegister.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const valueCorreo = inputInsertCorreo.value.trim();
+    const valuePassword = inputInsertPassword.value.trim();
+    const validCorreo = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    const validPassword = /^.{6,12}$/;
+
+    if (validCorreo.test(inputInsertCorreo.value) === false
+     && validPassword.test(inputInsertPassword.value) === false) {
+      errorInput(inputInsertCorreo, 'Los campos aún no han sido llenados');
+      errorInput(inputInsertPassword, 'Los campos aún no han sido llenados');
+    } else {
+      console.log('probandofirebase');
+      registerUser(valueCorreo, valuePassword)
+        .then((result) => {
+          console.log('prueba create', result);
+          navigateTo('/seniorFace');
+        })
+        .catch((err) => {
+          console.error(err);
+          const emailInvalid = document.createElement('div');
+          emailInvalid.classList.add('emailInvalid');
+          const messageInvalid = document.createElement('span');
+          messageInvalid.textContent = 'El correo ingresado ya se encuentra en uso, intente con otro';
+          emailInvalid.append(messageInvalid);
+          formRegister.append(emailInvalid);
+          setTimeout(() => { formRegister.removeChild(emailInvalid); }, 4000);
+        });
+    }
+    formRegister.reset();
+    cleanInputs(inputInsertCorreo);
+    cleanInputs(inputInsertPassword);
+  });
+
+  // Evento listener para registrarse con Google;
+  buttonRegisterGoogle.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    signInWithPopupGoogle(googleProvider)
+      .then((result) => {
+        console.log(result);
+        console.log('welcome');
+      })
+      .catch((err) => console.error(err));
+  });
+
+  return containerSection;
 }
-export default register;

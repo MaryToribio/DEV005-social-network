@@ -1,92 +1,247 @@
-function login(navigateTo) {
-  const root = document.getElementById('root');
-  const section = document.createElement('section');
-  section.classList.add('contenedor');
-  const contendorLr = document.createElement('div');
-  contendorLr.classList.add('contenedorLr');
+import { validateUserAndPasswordFireBase, googleProvider, signInWithPopupGoogle } from '../lib/index';
 
-  /* izquierda   */
+function login(navigateTo) {
+  const containerLogin = document.createElement('section');
+  containerLogin.classList.add('containerLogin');
+
+  /* Seccion izquierdo  */
   const divLeft = document.createElement('div');
   divLeft.classList.add('divLeft');
   divLeft.id = ('divLeft');
+
+  // imagen de fondo del lado izquierdo
   const imgLogin = document.createElement('img');
+  imgLogin.src = './img/img3.png';
+  imgLogin.alt = 'Es una hija que muestra una aplicacion a su padre en un movil';
+  imgLogin.classList.add('imgLogin');
+  // divLeft.append(imgLogin);
+
+  // nombre escrito en letras
   const divSocialNetword = document.createElement('div');
   divSocialNetword.classList.add('divSocialNetword');
   const spanSocialNetword = document.createElement('span');
   spanSocialNetword.textContent = 'Senior Face';
   divSocialNetword.append(spanSocialNetword);
-  const containerDiv = document.createElement('div');
-  containerDiv.classList.add('containerDiv');
-  /* derecha   */
+  // divLeft.append(divSocialNetword);
 
+  divLeft.append(imgLogin, divSocialNetword);
+
+  // creacion del contenedor derecho
   const divRight = document.createElement('div');
-  divRight.classList.add('divRaight');
-  const loginTitle = document.createElement('h2');
-  loginTitle.classList.add('loginTitle');
-  const userName = document.createElement('span');
-  const userPassword = document.createElement('span');
-  const userAsk = document.createElement('span');
-  userAsk.classList.add('askP');
-  const inputUser = document.createElement('input');
-  inputUser.classList.add('inputClassLogin');
-  const inputPassword = document.createElement('input');
-  inputPassword.classList.add('inputClassLogin');
+  divRight.classList.add('divRight');
+
+  // titulo de iniciar secion
+  const h2Login = document.createElement('h2');
+  h2Login.classList.add('h2Login');
+  h2Login.textContent = 'INICIAR SESION';
+
+  // Creación de formulario en el contenedor derecho
+  const formLogin = document.createElement('form');
+  formLogin.classList.add('formLogin');
+  divRight.append(formLogin);
+
+  // Input para insertar correo
+  const listInputCorreo = document.createElement('li');
+  listInputCorreo.classList.add('listInput');
+  const labelCorreo = document.createElement('label');
+  labelCorreo.textContent = 'INSERTAR CORREO ELECTRÓNICO';
+  const inputInsertCorreo = document.createElement('input');
+  inputInsertCorreo.name = 'correo';
+  inputInsertCorreo.placeholder = 'another@example.com';
+  const errorMessageEmail = document.createElement('small');
+  errorMessageEmail.textContent = '';
+  listInputCorreo.append(labelCorreo, inputInsertCorreo, errorMessageEmail);
+
+  // Input para insertar Password
+
+  const listInputPassword = document.createElement('li');
+  listInputPassword.classList.add('listInput');
+  const labelPassword = document.createElement('label');
+  labelPassword.textContent = 'INSERTAR CONTRASEÑA';
+  const inputInsertPassword = document.createElement('input');
+  inputInsertPassword.type = 'password';
+  inputInsertPassword.name = 'password';
+  inputInsertPassword.placeholder = 'mínimo 6 dígitos';
+  const errorMessagePassword = document.createElement('small');
+  errorMessagePassword.textContent = '';
+  listInputPassword.append(labelPassword, inputInsertPassword, errorMessagePassword);
+
+  // Boton de "iniciar secion"
+  const listButtonLogin = document.createElement('li');
   const buttonLogin = document.createElement('button');
-  buttonLogin.classList.add('buttonClassLogin');
-  const buttonRegister = document.createElement('button');
-  buttonRegister.classList.add('buttonClassLogin');
-  const divUser = document.createElement('div');
-  divUser.classList.add('loginDiv');
-  const divPassword = document.createElement('div');
-  divPassword.classList.add('loginDiv');
-  const divRegister = document.createElement('div');
-  divRegister.classList.add('buttonClass');
-  const divLogin = document.createElement('div');
-  divLogin.classList.add('buttonClass');
-  const divAsk = document.createElement('div');
-  divAsk.classList.add('divAsk');
+  buttonLogin.classList.add('buttonLogin');
+  buttonLogin.textContent = 'INICIAR SESION';
+  buttonLogin.type = 'submit';
+  listButtonLogin.append(buttonLogin);
+
+  // pregunta
+
+  const listAsk = document.createElement('li');
+  const smallAsk = document.createElement('small');
+  smallAsk.classList.add('smallAsk');
+  smallAsk.textContent = '¿No tienes una cuenta registrada?';
+  listAsk.append(smallAsk);
+
+  // Boton de "Registrar con Google"
+  const listButtonRegisterGoogle = document.createElement('li');
+  listButtonRegisterGoogle.classList.add('listButtonRegisterGoogle');
+  const buttonRegisterGoogle = document.createElement('button');
+  buttonRegisterGoogle.classList.add('buttonRegisterGoogle');
+  buttonRegisterGoogle.textContent = 'Inicia con Google';
+  listButtonRegisterGoogle.append(buttonRegisterGoogle);
+  const logoGoogle = document.createElement('img');
+  logoGoogle.src = './img/logoGoogle.png';
+  buttonRegisterGoogle.append(logoGoogle);
+
+  // Input de linea separadora
+  const containerLineDivide = document.createElement('div');
+  containerLineDivide.classList.add('containerLineDivide');
+  const lineDivide = document.createElement('div');
+  lineDivide.classList.add('lineDivide');
+  const circle = document.createElement('div');
+  circle.classList.add('circle');
+  lineDivide.append(circle);
+  containerLineDivide.append(lineDivide);
+
+  // Insertar listas en formulario "formLogin"
+
+  formLogin.append(
+    listInputCorreo,
+    listInputPassword,
+    listButtonLogin,
+    containerLineDivide,
+    listButtonRegisterGoogle,
+  );
+
+  // icono de la parte superior
   const divLogo = document.createElement('div');
   divLogo.classList.add('divLogo');
   const imgLogo = document.createElement('img');
   imgLogo.src = './img/iconoLogin.png';
   divLogo.append(imgLogo);
 
-  root.append(section);
-  section.append(contendorLr);
+  divRight.append(h2Login, divLogo, formLogin);
 
-  contendorLr.append(divLeft, divRight);
-  loginTitle.textContent = 'INICIAR SESION';
-  divRight.append(loginTitle, divLogo, containerDiv);
-  containerDiv.append(divUser, divPassword, divLogin, divAsk, divRegister);
+  containerLogin.append(divLeft, divRight);
 
-  userName.textContent = 'CORREO';
-  divUser.append(userName, inputUser);
+  // -----------------------------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------
 
-  userPassword.textContent = 'CONTRASEÑA';
-  divPassword.append(userPassword, inputPassword);
+  // Validación de inputs
 
-  buttonLogin.textContent = 'Iniciar Sesión';
-  divLogin.append(buttonLogin);
+  const listInputs = [inputInsertCorreo, inputInsertPassword];
+  console.log('prueba 0', listInputs);
 
-  userAsk.textContent = '¿No tienes una cuenta registrada?';
-  divAsk.append(userAsk);
+  // Validación de input vacio - funcion para mostrar correcto
+  function errorInput(input, messageError) {
+    const listInput = input.parentElement;
+    listInput.className = 'listInput error';
+    const small = listInput.querySelector('small');
+    listInput.classList.add('error');
+    small.innerText = messageError;
+  }
 
-  buttonRegister.textContent = 'Regístrate';
-  divRegister.append(buttonRegister);
+  function succesInput(input) {
+    const listInput = input.parentElement;
+    listInput.classList.add('success');
+    listInput.querySelector('small').innerText = '';
+  }
+  function cleanInputs(input) {
+    const listInput = input.parentElement;
+    listInput.classList.remove('success');
+    listInput.classList.remove('error');
+  }
 
-  divLeft.append(divSocialNetword);
+  // Funcion de validar direccionar a campos
+  function validInputs(e) {
+    console.log(e.target.name);
+    if (e.target.name === 'correo') {
+      const validCorreo = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
-  imgLogin.src = './img/img3.png';
-  imgLogin.classList.add('imgLogin');
-  imgLogin.alt = 'Es una hija que muestra una aplicacion a su padre en un movil';
-  divLeft.append(imgLogin);
+      if (inputInsertCorreo.value === '') {
+        errorInput(inputInsertCorreo, 'El campo está vacío');
+        console.log('nosehixo');
+      } else if (validCorreo.test(inputInsertCorreo.value) === false) {
+        console.log('nosepaso');
+        errorInput(inputInsertCorreo, 'El campo debe ser llenado correctamente');
+      } else {
+        console.log('done', 'done');
+        succesInput(inputInsertCorreo);
+      }
+    }
+    // errorInput(inputInsertCorreo, 'El campo debe ser llenado');
+    if (e.target.name === 'password') {
+      const validPassword = /^.{6,12}$/;
+      if (inputInsertPassword.value === '') {
+        errorInput(inputInsertPassword, 'El campo debe contener al menos 6 dígitos');
+      } else if (validPassword.test(inputInsertPassword.value) === true) {
+        succesInput(inputInsertPassword);
+      }
+    }
+    return true;
+  }
 
-  // creacion de eventos
-  buttonRegister.addEventListener('click', () => {
+  // Evento para cada input
+  listInputs.forEach((input) => {
+    input.addEventListener('keyup', validInputs);
+    input.addEventListener('blur', validInputs);
+  });
+
+  // Funciones de firebase
+  formLogin.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const valueCorreo = inputInsertCorreo.value.trim();
+    const valuePassword = inputInsertPassword.value.trim();
+    const validCorreo = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    const validPassword = /^.{6,12}$/;
+
+    if (validCorreo.test(inputInsertCorreo.value) === false
+     && validPassword.test(inputInsertPassword.value) === false) {
+      errorInput(inputInsertCorreo, 'Los campos aún no han sido llenados');
+      errorInput(inputInsertPassword, 'Los campos aún no han sido llenados');
+    } else {
+      console.log('probandofirebase');
+
+      validateUserAndPasswordFireBase(valueCorreo, valuePassword)
+        .then((result) => {
+          // Signed in
+          navigateTo('/home');
+          console.log(result);
+        })
+        .catch((err) => {
+          console.error(err);
+          const emailInvalid = document.createElement('div');
+          emailInvalid.classList.add('emailInvalid');
+          const messageInvalid = document.createElement('span');
+          messageInvalid.textContent = 'Correo no registrado';
+          emailInvalid.append(messageInvalid);
+          formLogin.append(emailInvalid);
+          setTimeout(() => { formLogin.removeChild(emailInvalid); }, 4000);
+        });
+    }
+    formLogin.reset();
+    cleanInputs(inputInsertCorreo);
+    cleanInputs(inputInsertPassword);
+    console.log('selogro');
+  });
+
+  buttonLogin.addEventListener('submit', (e) => {
+    e.preventDefault();
     navigateTo('/register');
   });
 
-  return root;
-}
+  buttonRegisterGoogle.addEventListener('click', (e) => {
+    e.preventDefault();
+    signInWithPopupGoogle(googleProvider)
+      .then(() => {
+      // Signed in
+        navigateTo('/home');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
 
+  return containerLogin;
+}
 export default login;

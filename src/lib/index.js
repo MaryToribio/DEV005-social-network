@@ -1,7 +1,16 @@
 // aqui exportaras las funciones que necesites
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js';
-import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js';
 
+import {
+  getFirestore, collection, getDocs, query, onSnapshot, where, addDoc,
+} from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js';
 // import register from '../components/register';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -17,42 +26,36 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
+export const app = initializeApp(firebaseConfig);
 console.log('probandoString', app);
 
-const auth = getAuth();
+export const auth = getAuth();
 
-const registerUser = (email, password) => {
-  console.log('datos: ', email, password);
-
+// Función de promesa para crear cuenta
+export const registerUser = (email, password) => {
+  console.log('datos1: ', email, password);
   return createUserWithEmailAndPassword(auth, email, password);
 };
 
-/* registerUser(email, password)
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.error(err);
-  }); */
+// Función de promesa para registrar con Google
+export const googleProvider = new GoogleAuthProvider();
+export const signInWithPopupGoogle = (provider) => signInWithPopup(auth, provider);
 
-//  registrarRedSocial('caro@yopmail.com', 'maria123')
+// Función para iniciar Sesión
 
-const idemail = document.querySelector('.inputInsertCorreo');
-const idpassword = document.querySelector('.inputInsertPassword');
-const eventButton = document.querySelector('.buttonRegister');
+export function validateUserAndPasswordFireBase(user, password) {
+  return signInWithEmailAndPassword(auth, user, password);
+}
+console.log('promesa', signInWithEmailAndPassword);
 
-eventButton.addEventListener('click', () => {
-  registerUser(idemail.value, idpassword.value)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+// funciones para publicar
 
-  console.log('console1', idemail.value);
-  console.log('console1', idpassword.value);
-});
+const db = getFirestore();
 
+export const createCollection = (newPost) => {
+  addDoc(collection(db, 'post'), { newPost });
+};
+
+export const getPost = getDocs(collection(db, 'post'));
+
+export const onGetPost = (callback) => onSnapshot(collection(db, 'post'), callback);
