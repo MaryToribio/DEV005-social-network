@@ -9,37 +9,39 @@
         background-color: white;
     }
 
-    .containerSection, .containerLogin {
+    .containerSection,
+    .containerLogin {
         width: 100%;
-        height: 100%;
+        height: 80vh;
+        margin: auto;
     }
 
     .divContainerPhrase {
         display: none;
     }
 
-    .containerRight, .divRaight {
-        width: 80%;
+    .containerRight,
+    .divRaight {
+        width: 100%;
         height: 90%;
-        
         font-family: 'Roboto Flex', sans-serif;
-        padding: 50px;
+        margin: auto;
+     
     }
 
     .divTitleLogo {
         width: 100%;
-        height: 180px;
+        height: 150px;
         background-color: rgb(250, 188, 89);
         text-align: center;
-        padding: 60px;
+        padding: 50px;
         font-size: 2em;
         font-family: 'Roboto Flex', sans-serif;
         font-size: 2.8em;
         font-weight: 700;
         color: rgb(39, 37, 33);
         box-shadow: 10px 0px 20px 0px rgb(196, 195, 194);
-      
-       
+
     }
 
     .divLogoRegister {
@@ -49,35 +51,42 @@
         border-radius: 50px;
         border: 5px solid rgb(243, 238, 238);
         margin: auto;
-        margin-top: 15px;
+
     }
 
     .divLogoRegister img {
         width: 80px;
         height: 80px;
         filter: invert(.6);
-     
+
+    }
+    .formRegister {
+        width:80%;
+        height: 80%;
+        list-style: none;
+        margin: auto;
+        margin-top: 20%;
+
+
     }
 
+    .divTitleRegister  {
+        width: 180px;
 
-    .formRegister {
-        list-style: none;
-        margin-top: 45px;
-        display: flex;
-        flex-flow: column wrap;
-        justify-content: center;
-        margin:auto;
-        margin-top: 40px;
-        margin-left: -20px;
+        font-size: 2.2em;
+        font-weight: 500;
+        color: rgb(101, 101, 100);
+     
+      margin: auto;
       
     }
 
-    .listInput {
-        width: 280px;
+    .listInput, .listButtonRegister, .listButtonRegisterGoogle, .lineDivide {
+        width: 280px; 
         margin: auto;
-        margin-bottom: 25px;
-        list-style: none;
-     
+        margin-top: 10%;
+        margin-bottom: 10%;
+
     }
 
     .listInput input {
@@ -93,19 +102,21 @@
         margin-bottom: 5px;
 
     }
-    .listInput small{
+
+    .listInput small {
         font-size: 1em;
         color: rgb(193, 36, 36);
-        font-weight: 900;   
+        font-weight: 900;
     }
 
     .listInput label {
         font-weight: 700;
         color: rgb(80, 79, 79);
     }
-    .listInput ::placeholder{
+
+    .listInput ::placeholder {
         color: rgb(189, 176, 176);
-        font-family:Arial, Helvetica, sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-weight: 100;
         font-size: 1em;
     }
@@ -120,6 +131,7 @@
         border: 2px solid rgba(188, 52, 52, 0.856);
         box-shadow: 0px 0px 10px rgba(210, 118, 118, 0.4);
     }
+
     .listInput.error2 input {
         border: 2px solid rgba(188, 52, 52, 0.856);
         box-shadow: 0px 0px 10px rgba(210, 118, 118, 0.4);
@@ -128,20 +140,12 @@
     .listInput.success input {
         border: 2px solid rgb(115, 215, 27);
         box-shadow: 0px 0px 10px rgba(160, 228, 58, 0.4);
-        
+
     }
 
-    .divTitleRegister {
-        margin-top: 30px;
-        text-align: center;
-        font-size: 2.2em;
-        font-weight: 500;
-        color: rgb(101, 101, 100);
-    }
 
-     
     .buttonRegister {
-       
+
         width: 280px;
         height: 60px;
         background-color: rgb(250, 188, 89);
@@ -153,12 +157,9 @@
         z-index: 20;
         font-weight: 600;
         margin: auto;
-        margin-top: 30px;
-        margin-bottom: 5px;
-        margin-left: 25px;
-      
+       
     }
-     
+
     .buttonRegisterGoogle {
         width: 280px;
         height: 60px;
@@ -173,17 +174,17 @@
         text-align: end;
         font-weight: 600;
         padding-right: 20px;
-        margin-bottom: 5px;
-        margin-left: 25px;
-      
        
+
+
     }
-    .buttonRegisterGoogle img{
+
+    .buttonRegisterGoogle img {
         width: 40px;
         height: 40px;
         position: absolute;
         left: 20px;
-        top:8px;
+        top: 8px;
 
     }
 
@@ -193,81 +194,93 @@
         box-shadow: 0px 0px 20px 1px rgb(112, 91, 38);
         transition: 1s;
     }
-    .containerLineDivide{
-       
-       
-       margin: auto;
-       margin-top:20px;
-       margin-bottom: 20px;
-       
+
+    .containerLineDivide {
+
+
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
     }
-    .lineDivide{
+
+    .lineDivide {
         width: 250px;
         height: 20px;
         position: relative;
     }
-    .lineDivide::after, .lineDivide::before{
+
+    .lineDivide::after,
+    .lineDivide::before {
         content: '';
         position: absolute;
         margin: auto;
         height: 1px;
         background: rgb(217, 215, 215);
         width: 45%;
-        top:45%;
+        top: 45%;
     }
-    .lineDivide::after{
-       left: 0px; 
+
+    .lineDivide::after {
+        left: 0px;
     }
-    .lineDivide::before{
-        right: 0px; 
-     }
-     .circle {
+
+    .lineDivide::before {
+        right: 0px;
+    }
+
+    .circle {
         width: 15px;
         height: 15px;
-        border:1px solid rgb(172, 170, 170);
+        border: 1px solid rgb(172, 170, 170);
         top: 0px;
         right: 0px;
         bottom: 0px;
         left: 0px;
         margin: auto;
         border-radius: 50%;
-        
-        
 
-     }
+
+
+    }
 
     .formRegister button:hover {
         background-color: rgb(42, 31, 23);
         color: rgb(237, 231, 224);
         box-shadow: 0px 0px 20px 1px rgb(39, 39, 37);
         transition: .5s;
-     
-       
+
+
     }
-    .emailInvalid{
+
+    .emailInvalid {
         width: 250px;
         margin: auto;
-        margin-left:   40px;
+        margin-left: 40px;
         margin-top: 70px;
         position: absolute;
         z-index: 10;
         text-align: center;
         color: rgb(205, 49, 49);
         font-weight: 600;
-     
-      
+
+
     }
 
 }
 
 @media (min-width:500px) {
     body {
-        background-image: linear-gradient(rgba(68, 59, 20, 0.75), rgba(245, 244, 240, 0.664)), url("./img/fondo0.jpg");
-        background-size: 2000px 1000px;
+       /* background-image: linear-gradient(rgba(68, 59, 20, 0.75), rgba(245, 244, 240, 0.664)), url("./img/fondo0.jpg");
+        background-size: 2000px 1000px;*/
+        background-color:rgb(249, 200, 74);    
+       
         padding: 50px;
+       
     }
 
-    .containerSection, .containerLogin {
+    .containerSection,
+    .containerLogin {
         width: 1200px;
         height: 750px;
         margin: auto;
@@ -275,56 +288,64 @@
         flex-flow: row wrap;
         justify-content: center;
         border-radius: 20px 0px 20px 0px;
-        box-shadow: 0px 0px 25px 1px rgb(24, 23, 23);
+       
     }
 
-    .containerLeft, .containerRight, .divRight, .divLeft {
+    .containerLeft,
+    .containerRight,
+    .divRight,
+    .divLeft {
         width: 600px;
         height: 750px;
     }
 
-    .containerLeft, .divLeft {
+    .containerLeft,
+    .divLeft {
         border-radius: 20px 0px 0px 0px;
         font-family: 'Amatic SC', cursive;
-        background-color: rgb(242, 218, 173);
+        background-color: rgb(249, 200, 74);   
         text-align: center;
         padding: 100px 0px 100px 0px;
         font-family: 'Amatic SC', cursive;
         position: relative;
     }
 
-    
 
-    .containerRight, .divRight {
+
+    .containerRight,
+    .divRight {
         border-radius: 0px 0px 20px 0px;
         background-color: rgb(255, 255, 255);
-        padding-top: 50px;
         font-family: 'Assistant', sans-serif;
         font-weight: 600;
+        outline: 2px solid red;
+        padding: 100px;
 
     }
 
-    .formRegister, .formLogin {
+    .formRegister,
+    .formLogin {
         width: 400px;
         height: 550px;
         margin: auto;
-        margin-top: 60px;
         list-style: none;
-        display: flex;
-        flex-flow: column wrap;
-        justify-content: center;
-        
-
+        outline: 2px solid green;
     }
 
-    .listInput {
+    .listInput{
         width: 380px;
-        height: 90px;
+        height: 130px;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .listButtonRegister, .listButtonRegisterGoogle, .lineDivide{
+        width: 380px;
+        height: 65px;
         margin: auto;
         margin-top: 20px;
-        margin-bottom: 20px;       
+        margin-bottom: 20px;
     }
-    
 
     .listInput input {
         width: 380px;
@@ -340,14 +361,16 @@
         color: rgb(91, 88, 88);
         margin-bottom: 3px;
     }
-    .listInput small{
+
+    .listInput small {
         font-size: 1.2em;
         color: rgb(193, 36, 36);
-        font-weight: 900;   
+        font-weight: 900;
     }
-    .listInput ::placeholder{
+
+    .listInput ::placeholder {
         color: rgb(189, 176, 176);
-        font-family:Arial, Helvetica, sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-weight: 100;
         font-size: 1em;
     }
@@ -363,18 +386,19 @@
         box-shadow: 0px 0px 10px rgba(210, 118, 118, 0.4);
 
     }
+
     .listInput.error2 input {
         border: 3px solid rgba(188, 52, 52, 0.856);
         box-shadow: 0px 0px 10px rgba(210, 118, 118, 0.4);
         font-size: 1.2em;
         color: rgb(193, 36, 36);
-        font-weight: 900; 
+        font-weight: 900;
     }
 
     .listInput.success input {
         border: 2px solid rgb(115, 215, 27);
         box-shadow: 0px 0px 10px rgba(160, 228, 58, 0.4);
-        
+
     }
 
     .listInput label {
@@ -394,19 +418,11 @@
         color: rgb(63, 63, 62);
         z-index: 20;
         font-weight: 600;
-        margin: auto;
-        margin-top: 40px;
-        margin-bottom: 5px;
-        margin-left: 10px;
-        
+       
     }
-    .listButtonRegisterGoogle{
-        width: 380px;
-        height: 65px;
-        margin-top: 0px;
-        margin-left: 10px;
-        margin-bottom: 20px; 
-    }
+
+   
+
     .buttonRegisterGoogle {
         width: 380px;
         height: 65px;
@@ -420,15 +436,16 @@
         border-radius: 10px;
         text-align: end;
         font-weight: 600;
-        padding-right: 30px;
-       
+        
+
     }
-    .buttonRegisterGoogle img{
+
+    .buttonRegisterGoogle img {
         width: 50px;
         height: 50px;
         position: absolute;
         left: 20px;
-        top:8px;
+        top: 8px;
 
     }
 
@@ -438,54 +455,64 @@
         box-shadow: 0px 0px 20px 1px rgb(112, 91, 38);
         transition: 1s;
     }
-    .containerLineDivide{
-       
-       
-       margin: auto;
-       margin-top: 10px;
-       margin-bottom: 10px;
-       
+
+    .containerLineDivide {
+
+
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
     }
-    .lineDivide{
+
+    .lineDivide {
         width: 380px;
         height: 20px;
         position: relative;
     }
-    .lineDivide::after, .lineDivide::before{
+
+    .lineDivide::after,
+    .lineDivide::before {
         content: '';
         position: absolute;
         margin: auto;
         height: 1px;
         background: rgb(217, 215, 215);
         width: 45%;
-        top:45%;
+        top: 45%;
     }
-    .lineDivide::after{
-       left: 0px; 
+
+    .lineDivide::after {
+        left: 0px;
     }
-    .lineDivide::before{
-        right: 0px; 
-     }
-     .circle {
+
+    .lineDivide::before {
+        right: 0px;
+    }
+
+    .circle {
         width: 15px;
         height: 15px;
-        border:1px solid rgb(172, 170, 170);
+        border: 1px solid rgb(172, 170, 170);
         top: 0px;
         right: 0px;
         bottom: 0px;
         left: 0px;
         margin: auto;
         border-radius: 50%;
-        
-        
 
-     }
 
-    .titleRegister, .h2Login{
-        margin-left: 180px;
-        margin-bottom: 100px;
+
+    }
+
+    .titleRegister,
+    .h2Login {
+        width: 500px;
+        margin: auto;
         font-size: 3em;
         color: rgb(67, 60, 50);
+        outline: 2px solid yellow;
+        
 
     }
 
@@ -502,7 +529,7 @@
         font-weight: 500;
     }
 
-    .divTitleLogo .divLogo{
+    .divTitleLogo .divLogo {
         width: 600px;
         height: 180px;
         position: absolute;
@@ -522,9 +549,9 @@
         text-shadow: 0px 3px 5px rgba(63, 63, 63, 0.953);
 
     }
- 
 
-    .divLogoRegister  {
+
+    .divLogoRegister {
         width: 80px;
         height: 80px;
         background-color: rgb(39, 35, 35);
@@ -534,44 +561,48 @@
         position: absolute;
         right: -345px;
         padding: 6px;
-      
+
     }
 
     .divLogoRegister img {
         width: 60px;
         height: 60px;
         filter: invert(.6);
-        
+
     }
-    .h2Login{
-       
+
+    .h2Login {
+
         margin-bottom: 0px;
         font-size: 3em;
         color: rgb(67, 60, 50);
         margin-left: 150px;
-       
+
 
     }
-    .divLogo{
+
+    .divLogo {
         width: 80px;
         height: 80px;
         background-color: rgb(39, 35, 35);
         border-radius: 50px;
         border: 4px solid rgb(244, 174, 94);
         margin: auto;
-       
-        
-      
-        
-      
+
+
+
+
+
     }
-    .divLogo img{
+
+    .divLogo img {
         width: 60px;
         height: 60px;
         filter: invert(.6);
         margin-left: 6px;
     }
-     .formLogin {
+
+    .formLogin {
         width: 400px;
         height: 550px;
         margin: auto;
@@ -581,26 +612,28 @@
         flex-flow: column wrap;
         justify-content: center;
     }
-    .emailInvalid{
+
+    .emailInvalid {
         width: 450px;
         margin: auto;
         margin-top: 55px;
         padding: 5px;
-        margin-left:  -25px;
+        margin-left: -25px;
         position: absolute;
         z-index: 10;
         text-align: center;
         color: rgb(205, 49, 49);
     }
+
     .divLeft {
         padding: 0px;
     }
 
-    .imgLogin{
+    .imgLogin {
         width: 600px;
         height: 750px;
         border-radius: 20px 0px 0px 0px;
-      
+
     }
 
 

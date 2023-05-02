@@ -46,6 +46,7 @@ export function register(navigateTo) {
 
   // Boton de "Registrar y guardar"
   const listButtonRegister = document.createElement('li');
+  listButtonRegister.classList.add('listButtonRegister');
   const buttonRegister = document.createElement('button');
   buttonRegister.classList.add('buttonRegister');
   buttonRegister.textContent = 'Guardar y Registrar';
@@ -76,6 +77,7 @@ export function register(navigateTo) {
   // Insertar listas en formulario "formRegister"
 
   formRegister.append(
+    divTitleRegister,
     listInputCorreo,
     listInputPassword,
     listButtonRegister,
@@ -104,7 +106,7 @@ export function register(navigateTo) {
   divTitleLogo.append(titleLogo, divLogoRegister);
 
   // ContainerRight
-  containerRight.append(divTitleRegister, formRegister);
+  containerRight.append(formRegister);
   // ContainerLeft
   containerLeft.append(divContainerPhrase, divTitleLogo);
 
@@ -187,7 +189,7 @@ export function register(navigateTo) {
       registerUser(valueCorreo, valuePassword)
         .then((result) => {
           console.log('prueba create', result);
-          navigateTo('/seniorFace');
+          navigateTo('/home');
         })
         .catch((err) => {
           console.error(err);

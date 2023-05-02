@@ -53,20 +53,21 @@ export function home() {
   // ---------------------------------------------------------------
 
   // Pintar post al refrescar pantalla
-  window.addEventListener('DOMContentLoaded', async () => {
-    //----------------------------------
+  // window.addEventListener('DOMContentLoaded', async () => {
+  //----------------------------------
 
-    onGetPost((querySnapshot) => {
-      let html = '';
-      querySnapshot.forEach((doc) => {
-        const post = doc.data();
-        html += ` <article>
+  onGetPost((querySnapshot) => {
+    let html = '';
+    querySnapshot.forEach((doc) => {
+      const post = doc.data();
+      html += ` <article>
       <p>${post.newPost}</p>
+      <p>${post.user}</p>
     </article>`;
-      });
-      sectionPost.innerHTML = html;
     });
+    sectionPost.innerHTML = html;
   });
+  // });
 
   // crecion de eventos
   formToPost.addEventListener('submit', (e) => {

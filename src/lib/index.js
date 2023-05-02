@@ -29,7 +29,7 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 console.log('probandoString', app);
 
-export const auth = getAuth();
+export const auth = getAuth(app);
 
 // Función de promesa para crear cuenta
 export const registerUser = (email, password) => {
@@ -53,8 +53,11 @@ console.log('promesa', signInWithEmailAndPassword);
 const db = getFirestore();
 
 export const createCollection = (newPost) => {
-  addDoc(collection(db, 'post'), { newPost });
+
+  addDoc(collection(db, 'post'), { newPost, user: auth.currentUser.email });
+  console.log(auth.currentUser.email);
 };
+
 
 export const getPost = getDocs(collection(db, 'post'));
 
