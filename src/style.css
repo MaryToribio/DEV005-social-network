@@ -21,20 +21,28 @@
     }
 
     .containerRight,
-    .divRaight {
+    .divRight {
         width: 100%;
         height: 90%;
         font-family: 'Roboto Flex', sans-serif;
         margin: auto;
-     
+
+
     }
 
-    .divTitleLogo {
+    .imgSeniorFace,
+    .imgLogin {
+        display: none;
+    }
+
+
+    .divTitleLogo,
+    .divSocialNetword {
         width: 100%;
         height: 150px;
         background-color: rgb(250, 188, 89);
         text-align: center;
-        padding: 50px;
+        padding: 40px;
         font-size: 2em;
         font-family: 'Roboto Flex', sans-serif;
         font-size: 2.8em;
@@ -44,50 +52,77 @@
 
     }
 
-    .divLogoRegister {
+
+
+    .divLogoRegister,
+    .divLogo {
         width: 100px;
         height: 100px;
         background-color: rgb(27, 24, 19);
         border-radius: 50px;
         border: 5px solid rgb(243, 238, 238);
         margin: auto;
+        margin-top: -50px;
+
 
     }
 
-    .divLogoRegister img {
+
+    .divLogoRegister img,
+    .divLogo img {
         width: 80px;
         height: 80px;
         filter: invert(.6);
+        margin: 5px;
+        margin-top: 2px;
 
     }
-    .formRegister {
-        width:80%;
-        height: 80%;
+
+    .formRegister,
+    .formLogin {
+        width: 80%;
+        height: 95%;
         list-style: none;
         margin: auto;
-        margin-top: 20%;
+        margin-top: 5%;
 
 
     }
 
-    .divTitleRegister  {
+    .divTitleRegister,
+    .divTitleLogin {
         width: 180px;
-
         font-size: 2.2em;
         font-weight: 500;
         color: rgb(101, 101, 100);
-     
-      margin: auto;
-      
+        margin: auto;
+
     }
 
-    .listInput, .listButtonRegister, .listButtonRegisterGoogle, .lineDivide {
-        width: 280px; 
+    .divTitleLogin {
+        width: 250px;
+        margin: auto;
+
+    }
+
+    .listInput,
+    .listButtonRegister,
+    .listButtonRegisterGoogle,
+    .lineDivide,
+    .listButtonLogin,
+    .listButtonLoginGoogle,
+    .listButtonToRegister {
+        width: 280px;
         margin: auto;
         margin-top: 10%;
         margin-bottom: 10%;
+    }
+
+    .listButtonToRegister {
+        margin-top: 23%;
 
     }
+
 
     .listInput input {
         width: 280px;
@@ -144,7 +179,9 @@
     }
 
 
-    .buttonRegister {
+    .buttonRegister,
+    .buttonLogin,
+    .buttonToRegister {
 
         width: 280px;
         height: 60px;
@@ -157,10 +194,13 @@
         z-index: 20;
         font-weight: 600;
         margin: auto;
-       
     }
 
-    .buttonRegisterGoogle {
+
+
+    .buttonRegisterGoogle,
+    .buttonLoginGoogle,
+    .buttonToRegister {
         width: 280px;
         height: 60px;
         background: rgb(254, 244, 218);
@@ -174,12 +214,19 @@
         text-align: end;
         font-weight: 600;
         padding-right: 20px;
-       
-
 
     }
 
-    .buttonRegisterGoogle img {
+    .buttonToRegister {
+        background-color: rgb(250, 249, 248);
+
+        padding-right: 0px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .buttonRegisterGoogle img,
+    .buttonLoginGoogle img {
         width: 40px;
         height: 40px;
         position: absolute;
@@ -189,20 +236,12 @@
     }
 
     .formRegister button:hover {
-        background-color: rgb(90, 71, 57);
+        background-color: rgb(224, 139, 69);
         color: rgb(237, 231, 224);
         box-shadow: 0px 0px 20px 1px rgb(112, 91, 38);
         transition: 1s;
     }
 
-    .containerLineDivide {
-
-
-        margin: auto;
-        margin-top: 20px;
-        margin-bottom: 20px;
-
-    }
 
     .lineDivide {
         width: 250px;
@@ -240,8 +279,6 @@
         margin: auto;
         border-radius: 50%;
 
-
-
     }
 
     .formRegister button:hover {
@@ -267,28 +304,165 @@
 
     }
 
+
+    /*Estilos para ruta Home*/
+
+    main {
+        width: 100%;
+        height: 100%;
+
+    }
+
+    nav {
+        width: 100%;
+        padding: 20px;
+        background-color: rgb(249, 200, 74);
+        font-family: 'Roboto Flex', sans-serif;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+
+    .divUserName {
+        width: 60px;
+        height: 60px;
+        background-color: rgb(27, 24, 19);
+        border-radius: 50px;
+        border: 3px solid rgb(243, 238, 238);
+    }
+
+    .titleHome {
+        width: 200px;
+        height: 60px;
+        padding: 15px;
+    }
+
+    .sectionToPost {
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        padding: 10%;
+
+
+    }
+
+    .formToPost {
+        width: 100%;
+
+        min-height: 50px;
+        background-color: rgb(217, 215, 215);
+        border: 1px solid rgb(80, 79, 79);
+        border-radius: 10px;
+        padding: 10px;
+        margin: auto;
+        position: relative;
+        font-size: .8em;
+
+
+    }
+
+    .inputToPost {
+        background-color: rgb(80 79 79 / 0%);
+        width: 100%;
+        min-height: 70px;
+        border: 1px solid blue;
+        border-color: rgb(229 229 229 / 0%);
+        margin: auto;
+        padding: 10px;
+        outline: 1px solid red;
+
+
+        resize: none;
+        font-size: 1.5em;
+
+    }
+
+    .buttonToPost {
+        background: rgb(248 190 40 / 98%);
+        box-shadow: 0px 0px 5px 1px rgb(229, 229, 229);
+        font-size: 12px;
+        border: 1px solid rgb(193 184 163);
+        color: rgb(79, 79, 79);
+        position: absolute;
+        left: 20px;
+        bottom: -20px;
+        border-radius: 4px;
+        font-weight: 600;
+        padding: 9px;
+    }
+
+
+    .sectionPost {
+        width: 100%;
+        height: 100%;
+        background-color: rgb(237, 231, 224);
+        padding: 12%;
+
+    }
+
+    /*.articleUser {
+      
+        background-color: #fff;
+        border: 2px solid rgb(27, 24, 19);
+        border-color: rgb(172, 170, 170);
+        border-radius: 10px;
+        outline: 1px solid rgb(245, 46, 46) ;
+    }*/
+
+    .articlePost {
+        background-color: rgb(217, 215, 215);
+        border: 1px solid #ccc;
+        border-color: rgb(80, 79, 79);
+        width: 100%;
+        min-height: 120px;
+        height: 20px;
+        border-radius: 10px;
+        padding: 12px;
+        margin: 30px auto 30px auto;
+        outline: 1px solid blue;
+        word-wrap: break-word;
+
+    }
+
+    .articlePost .textPost {
+        width: 100%;
+        min-height: 100px;
+        outline: 2px solid red;
+
+    }
+
+    .buttonEmoticonDelete {
+        width: 100px;
+        height: 50px;
+        background-image: url("./img/emoticonEdit.png");
+        background-size: cover;
+    }
+
+
+
 }
 
 @media (min-width:500px) {
     body {
-       /* background-image: linear-gradient(rgba(68, 59, 20, 0.75), rgba(245, 244, 240, 0.664)), url("./img/fondo0.jpg");
-        background-size: 2000px 1000px;*/
-        background-color:rgb(249, 200, 74);    
-       
-        padding: 50px;
-       
+        /* background-image: linear-gradient(rgb(22, 15, 10),rgba(41, 29, 19, 0.795)), url(./img/patron9.png);*/
+        background-image: url(./img/patron9.png);
+        background-size: 1200px 1000px;
+        background-color: rgb(12, 10, 8);
+
+
     }
 
     .containerSection,
     .containerLogin {
         width: 1200px;
-        height: 750px;
+        height: 850px;
         margin: auto;
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
         border-radius: 20px 0px 20px 0px;
-       
+        margin-top: 50px;
+        box-shadow: 0px 0px 10px 0px rgb(109, 108, 108);
     }
 
     .containerLeft,
@@ -296,18 +470,25 @@
     .divRight,
     .divLeft {
         width: 600px;
-        height: 750px;
+        height: 850px;
+
     }
 
     .containerLeft,
     .divLeft {
         border-radius: 20px 0px 0px 0px;
         font-family: 'Amatic SC', cursive;
-        background-color: rgb(249, 200, 74);   
+        background-color: rgb(245, 203, 89);
         text-align: center;
         padding: 100px 0px 100px 0px;
         font-family: 'Amatic SC', cursive;
         position: relative;
+    }
+
+    .containerLeft img {
+        width: 400px;
+
+
     }
 
 
@@ -318,28 +499,49 @@
         background-color: rgb(255, 255, 255);
         font-family: 'Assistant', sans-serif;
         font-weight: 600;
-        outline: 2px solid red;
-        padding: 100px;
+        position: relative;
+
 
     }
 
     .formRegister,
     .formLogin {
         width: 400px;
-        height: 550px;
+        height: 700px;
         margin: auto;
         list-style: none;
-        outline: 2px solid green;
+        margin-top: 70px;
+
     }
 
-    .listInput{
+    .divTitleRegister,
+    .divTitleLogin {
+        width: 220px;
+        margin: auto;
+        font-size: 3em;
+        color: rgb(67, 60, 50);
+        margin-bottom: 100px;
+
+    }
+
+    .divTitleLogin {
+        width: 350px;
+    }
+
+    .listInput {
         width: 380px;
         height: 130px;
         margin: auto;
         margin-top: 10px;
         margin-bottom: 10px;
     }
-    .listButtonRegister, .listButtonRegisterGoogle, .lineDivide{
+
+    .listButtonRegister,
+    .listButtonRegisterGoogle,
+    .lineDivide,
+    .listButtonLogin,
+    .listButtonLoginGoogle,
+    .listButtonToRegister {
         width: 380px;
         height: 65px;
         margin: auto;
@@ -407,7 +609,8 @@
         color: rgb(80, 79, 79);
     }
 
-    .buttonRegister {
+    .buttonRegister,
+    .buttonLogin {
         width: 380px;
         height: 65px;
         background-color: rgb(250, 188, 89);
@@ -418,12 +621,14 @@
         color: rgb(63, 63, 62);
         z-index: 20;
         font-weight: 600;
-       
+
     }
 
-   
 
-    .buttonRegisterGoogle {
+
+    .buttonRegisterGoogle,
+    .buttonLoginGoogle,
+    .buttonToRegister {
         width: 380px;
         height: 65px;
         background: rgb(254, 244, 218);
@@ -436,11 +641,22 @@
         border-radius: 10px;
         text-align: end;
         font-weight: 600;
-        
+        padding-right: 30px;
+    }
+
+    .buttonLoginGoogle {
+        padding-right: 80px;
+    }
+
+    .buttonToRegister {
+        text-align: center;
+        padding-right: 0px;
+        background-color: rgb(250, 249, 248);
 
     }
 
-    .buttonRegisterGoogle img {
+    .buttonRegisterGoogle img,
+    .buttonLoginGoogle img {
         width: 50px;
         height: 50px;
         position: absolute;
@@ -450,8 +666,8 @@
     }
 
     .formRegister button:hover {
-        background-color: rgb(90, 71, 57);
-        color: rgb(237, 231, 224);
+        background-color: rgb(224, 139, 69);
+        color: rgb(0, 0, 0);
         box-shadow: 0px 0px 20px 1px rgb(112, 91, 38);
         transition: 1s;
     }
@@ -501,20 +717,9 @@
         margin: auto;
         border-radius: 50%;
 
-
-
     }
 
-    .titleRegister,
-    .h2Login {
-        width: 500px;
-        margin: auto;
-        font-size: 3em;
-        color: rgb(67, 60, 50);
-        outline: 2px solid yellow;
-        
 
-    }
 
     .divContainerPhrase {
         margin: auto;
@@ -533,16 +738,14 @@
         width: 600px;
         height: 180px;
         position: absolute;
-        bottom: 0px;
         background-color: rgba(246, 210, 101, 0.862);
         text-align: left;
-        padding-left: 150px;
-        padding-top: 40px;
         z-index: 10;
 
     }
 
-    .divTitleLogo span {
+    .divTitleLogo span,
+    .divSocialNetword span {
         font-family: 'Cabin Condensed', sans-serif;
         font-size: 5em;
         color: rgb(82, 68, 46);
@@ -551,36 +754,7 @@
     }
 
 
-    .divLogoRegister {
-        width: 80px;
-        height: 80px;
-        background-color: rgb(39, 35, 35);
-        border-radius: 50px;
-        border: 4px solid rgb(244, 174, 94);
-        margin-top: -580px;
-        position: absolute;
-        right: -345px;
-        padding: 6px;
-
-    }
-
-    .divLogoRegister img {
-        width: 60px;
-        height: 60px;
-        filter: invert(.6);
-
-    }
-
-    .h2Login {
-
-        margin-bottom: 0px;
-        font-size: 3em;
-        color: rgb(67, 60, 50);
-        margin-left: 150px;
-
-
-    }
-
+    .divLogoRegister,
     .divLogo {
         width: 80px;
         height: 80px;
@@ -588,54 +762,164 @@
         border-radius: 50px;
         border: 4px solid rgb(244, 174, 94);
         margin: auto;
-
-
-
+        position: absolute;
+        right: 265px;
+        top: 140px;
 
 
     }
 
+    .divLogoRegister img,
     .divLogo img {
         width: 60px;
         height: 60px;
         filter: invert(.6);
-        margin-left: 6px;
+        margin: 6px;
+
     }
 
-    .formLogin {
-        width: 400px;
-        height: 550px;
-        margin: auto;
-        margin-top: 0px;
-        list-style: none;
-        display: flex;
-        flex-flow: column wrap;
-        justify-content: center;
-    }
 
     .emailInvalid {
-        width: 450px;
+        width: 300px;
         margin: auto;
-        margin-top: 55px;
-        padding: 5px;
-        margin-left: -25px;
-        position: absolute;
-        z-index: 10;
         text-align: center;
         color: rgb(205, 49, 49);
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 1.1em;
     }
+
 
     .divLeft {
         padding: 0px;
     }
 
-    .imgLogin {
+    .imgLogin img {
         width: 600px;
         height: 750px;
         border-radius: 20px 0px 0px 0px;
 
+
+    }
+
+    .bodyHome {
+        background-color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 100%;
+        height: 100%;
+    }
+
+    .navHome {
+        width: 100%;
+        height: 120px;
+        background-color: rgb(219, 91, 16);
+      
+        display: flex;
+        justify-content:space-between;
+      
+    }
+
+    .navHome h1 {
+        
+        display: inline-block;    
+        font-size: 2.5em ;   
+        margin: 30px;
+    }
+    .divUserName{
+        background-color: aqua;
+        width: 80px;
+        height:80px;
+        border-radius: 40px;
+        margin: 20px;
+   
     }
 
 
+    .mainHome {
+        background-color: aquamarine;
+        width:100% ;
+        height: 100%;
+        display: flex;
+   
+        justify-content:space-between;
+      
+
+    }
+
+    .sectionToPost,
+    .sectionPost {
+
+        width: 50%;
+        height: 100%;
+        outline: 2px solid coral;
+        padding: 10px;  
+        margin: 20px;      
+    }
+    .sectionToPost{
+        margin-right: 0px;
+        height: 500px;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+  
+    }
+    .sectionPost{
+        overflow:scroll;
+        height:880px;
+    }
+
+
+    .articlePost{
+        background-color: rgb(219, 188, 188);
+        margin: 30px;
+        padding: 10px;
+        border-radius: 5px;
+        word-wrap: break-word;
+    }
 
 }
+
+
+    /* Estilos para laptops */
+
+
+    /*@media (max-width: 768px) {
+
+    nav {
+        background-color: #f0890b;
+        color: #fff;
+        padding: 20px;
+    }
+
+    .sectionPost {
+        background-color: #efdfdf;
+        padding: 20px;
+        display: inline-block;
+        width: 50%;
+        float: right;
+        height: 50%;
+    }
+
+    .sectionToPost {
+        background-color: #f2f2f2;
+        padding: 20px;
+        display: inline-block;
+        width: 50%;
+        float: left;
+        height: 611px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+
+    }
+
+    article {
+        background-color: #fff;
+        padding: 20px;
+        display: inline-block;
+        width: 30%;
+        margin: 0 auto;
+        flex: 1;
+
+    }
+}*/

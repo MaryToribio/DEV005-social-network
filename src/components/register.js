@@ -8,6 +8,7 @@ export function register(navigateTo) {
   // Creación de containerRight
   const containerRight = document.createElement('section');
   containerRight.classList.add('containerRight');
+
   const titleRegister = document.createElement('span');
   titleRegister.classList.add('titleRegister');
   titleRegister.textContent = 'Registrarse';
@@ -49,7 +50,7 @@ export function register(navigateTo) {
   listButtonRegister.classList.add('listButtonRegister');
   const buttonRegister = document.createElement('button');
   buttonRegister.classList.add('buttonRegister');
-  buttonRegister.textContent = 'Guardar y Registrar';
+  buttonRegister.textContent = 'Guardar y registrar';
   buttonRegister.type = 'submit';
   listButtonRegister.append(buttonRegister);
 
@@ -94,6 +95,9 @@ export function register(navigateTo) {
   contentPhrase.classList.add('contentPhrase');
   contentPhrase.textContent = 'Porque aún hay mucho más por contar y compartir';
   divContainerPhrase.append(contentPhrase);
+  const imgSeniorFace = document.createElement('img');
+  imgSeniorFace.classList.add('imgSeniorFace');
+  imgSeniorFace.src = './img/SeniorFace2.png';
   const divTitleLogo = document.createElement('div');
   divTitleLogo.classList.add('divTitleLogo');
   const titleLogo = document.createElement('span');
@@ -103,12 +107,12 @@ export function register(navigateTo) {
   const imageIcono = document.createElement('img');
   imageIcono.src = './img/iconoLogin.png';
   divLogoRegister.append(imageIcono);
-  divTitleLogo.append(titleLogo, divLogoRegister);
+  divTitleLogo.append(titleLogo);
 
   // ContainerRight
-  containerRight.append(formRegister);
+  containerRight.append(divLogoRegister, formRegister);
   // ContainerLeft
-  containerLeft.append(divContainerPhrase, divTitleLogo);
+  containerLeft.append(divContainerPhrase, imgSeniorFace, divTitleLogo);
 
   containerSection.append(containerLeft, containerRight);
 

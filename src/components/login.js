@@ -31,9 +31,12 @@ function login(navigateTo) {
   divRight.classList.add('divRight');
 
   // titulo de iniciar secion
-  const h2Login = document.createElement('h2');
-  h2Login.classList.add('h2Login');
+  const divTitleLogin = document.createElement('li');
+  divTitleLogin.classList.add('divTitleLogin');
+  const h2Login = document.createElement('span');
+  h2Login.classList.add('spanLogin');
   h2Login.textContent = 'INICIAR SESION';
+  divTitleLogin.append(h2Login);
 
   // Creación de formulario en el contenedor derecho
   const formLogin = document.createElement('form');
@@ -68,6 +71,7 @@ function login(navigateTo) {
 
   // Boton de "iniciar secion"
   const listButtonLogin = document.createElement('li');
+  listButtonLogin.classList.add('listButtonLogin');
   const buttonLogin = document.createElement('button');
   buttonLogin.classList.add('buttonLogin');
   buttonLogin.textContent = 'INICIAR SESION';
@@ -83,15 +87,15 @@ function login(navigateTo) {
   listAsk.append(smallAsk);
 
   // Boton de "Registrar con Google"
-  const listButtonRegisterGoogle = document.createElement('li');
-  listButtonRegisterGoogle.classList.add('listButtonRegisterGoogle');
-  const buttonRegisterGoogle = document.createElement('button');
-  buttonRegisterGoogle.classList.add('buttonRegisterGoogle');
-  buttonRegisterGoogle.textContent = 'Inicia con Google';
-  listButtonRegisterGoogle.append(buttonRegisterGoogle);
+  const listButtonLoginGoogle = document.createElement('li');
+  listButtonLoginGoogle.classList.add('listButtonLoginGoogle');
+  const buttonLoginGoogle = document.createElement('button');
+  buttonLoginGoogle.classList.add('buttonLoginGoogle');
+  buttonLoginGoogle.textContent = 'Inicia con Google';
+  listButtonLoginGoogle.append(buttonLoginGoogle);
   const logoGoogle = document.createElement('img');
   logoGoogle.src = './img/logoGoogle.png';
-  buttonRegisterGoogle.append(logoGoogle);
+  buttonLoginGoogle.append(logoGoogle);
 
   // Input de linea separadora
   const containerLineDivide = document.createElement('div');
@@ -103,14 +107,24 @@ function login(navigateTo) {
   lineDivide.append(circle);
   containerLineDivide.append(lineDivide);
 
+  // Boton para Registrarse
+  const listButtonToRegister = document.createElement('li');
+  listButtonToRegister.classList.add('listButtonToRegister');
+  const buttonToRegister = document.createElement('button');
+  buttonToRegister.classList.add('buttonToRegister');
+  buttonToRegister.textContent = 'REGÍSTRATE';
+  listButtonToRegister.append(buttonToRegister);
+
   // Insertar listas en formulario "formLogin"
 
   formLogin.append(
+    divTitleLogin,
     listInputCorreo,
     listInputPassword,
     listButtonLogin,
+    listButtonLoginGoogle,
     containerLineDivide,
-    listButtonRegisterGoogle,
+    listButtonToRegister,
   );
 
   // icono de la parte superior
@@ -120,13 +134,13 @@ function login(navigateTo) {
   imgLogo.src = './img/iconoLogin.png';
   divLogo.append(imgLogo);
 
-  divRight.append(h2Login, divLogo, formLogin);
+  divRight.append(divLogo, formLogin);
 
   containerLogin.append(divLeft, divRight);
 
   // -----------------------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-
+  listButtonToRegister.addEventListener('click', () => navigateTo('/register'));
   // Validación de inputs
 
   const listInputs = [inputInsertCorreo, inputInsertPassword];
@@ -230,7 +244,7 @@ function login(navigateTo) {
     navigateTo('/register');
   });
 
-  buttonRegisterGoogle.addEventListener('click', (e) => {
+  listButtonLoginGoogle.addEventListener('click', (e) => {
     e.preventDefault();
     signInWithPopupGoogle(googleProvider)
       .then(() => {
