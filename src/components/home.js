@@ -87,6 +87,7 @@ export function home() {
   // ---------------------------------------------------------------
 
   // Pintar post al refrescar pantalla
+  // window.addEventListener('DOMContentLoaded', async () => {
   //----------------------------------
 
   // se modificando del la plantilla a crear todos los elecmentos
@@ -104,7 +105,7 @@ export function home() {
       const textUser = document.createElement('p');
       textUser.classList.add('textUser');
       textUser.textContent = post.user;
-//crear el icono like   post.like(RETORNA EL NUMERO)
+      // crear el icono like   post.like(RETORNA EL NUMERO)
       if (user.email === post.user) {
         const buttonDelete = document.createElement('button');
         buttonDelete.classList.add('buttonDelete');
@@ -112,7 +113,7 @@ export function home() {
         buttonDelete.addEventListener('click', () => {
           deleteCollection(doc.id);
         });
-        //crear boton editar 
+        // crear boton editar
         articlePost.append(textPost, textUser, buttonDelete);
       } else {
         articlePost.append(textPost, textUser);

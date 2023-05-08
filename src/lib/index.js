@@ -1,4 +1,4 @@
-// aqui exportaras las funciones que necesites
+// aqui exportaras las funciones que necesites (se borro los modulos que no se usan)
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js';
 import {
   getAuth,
@@ -9,7 +9,7 @@ import {
 } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js';
 
 import {
-  getFirestore, collection, getDocs, query, onSnapshot, where, addDoc,
+  getFirestore, collection, query, orderBy, onSnapshot, addDoc, doc, deleteDoc, updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js';
 // import register from '../components/register';
 // TODO: Add SDKs for Firebase products that you want to use
@@ -26,7 +26,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 console.log('probandoString', app);
 
 export const auth = getAuth(app);
@@ -53,12 +53,28 @@ console.log('promesa', signInWithEmailAndPassword);
 const db = getFirestore();
 
 export const createCollection = (newPost) => {
-
-  addDoc(collection(db, 'post'), { newPost, user: auth.currentUser.email });
+  addDoc(collection(db, 'post'), {
+    newPost,
+    user: auth.currentUser.email,
+    dateCreated: new Date(),
+    like: 0,
+  });
   console.log(auth.currentUser.email);
 };
 
+// se crea deletecollection para elimminar los comentarios
+export const deleteCollection = (postID) => {
+  deleteDoc(doc(db, 'post', postID));
+};
 
-export const getPost = getDocs(collection(db, 'post'));
+// se remplaza getdoc , por el query y se adiciono orderBy (para ordedar porfecha
+// y muestro lo ultimo)
+const getPost = query(collection(db, 'post'), orderBy('dateCreated', 'desc'));
 
-export const onGetPost = (callback) => onSnapshot(collection(db, 'post'), callback);
+export const onGetPost = (callback) => onSnapshot(getPost, callback);
+
+// para editar el post
+
+export const updatePost = (postID, newPostValue) => {
+  updateDoc(postID, { newPost: newPostValue });
+};
