@@ -5,7 +5,6 @@ export function home() {
   const bodyHome = document.createElement('body');
   bodyHome.classList.add('bodyHome');
 
-
   // Creación del nav
   const navHome = document.createElement('nav');
   navHome.classList.add('navHome');
@@ -86,7 +85,6 @@ export function home() {
   // ---------------------------------------------------------------
 
   // Pintar post al refrescar pantalla
-  // window.addEventListener('DOMContentLoaded', async () => {
   //----------------------------------
 
   onGetPost((querySnapshot) => {
@@ -96,9 +94,12 @@ export function home() {
       html += ` <article class ='articlePost'>
       <p class='textPost'>${post.newPost}</p>
       <p >${post.user}</p>
+      <button class='buttonEdit'>Editar<button>
     </article>`;
     });
     sectionPost.innerHTML = html;
+    const buttonEdit = sectionPost.querySelectorAll('.buttonEdit');
+    buttonEdit.addEventListener
   });
 
   // funcionalidad para eliminar publicacion
