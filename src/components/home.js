@@ -1,4 +1,6 @@
-import { createCollection, getPost, onGetPost } from '../lib/index';
+import {
+  createCollection, onGetPost, auth, deleteCollection,
+} from '../lib/index';
 
 export function home() {
 // Creación del body
@@ -87,19 +89,36 @@ export function home() {
   // Pintar post al refrescar pantalla
   //----------------------------------
 
+  // se modificando del la plantilla a crear todos los elecmentos
+
   onGetPost((querySnapshot) => {
-    let html = '';
+    const user = auth.currentUser;
+    sectionPost.innerHTML = '';
     querySnapshot.forEach((doc) => {
       const post = doc.data();
-      html += ` <article class ='articlePost'>
-      <p class='textPost'>${post.newPost}</p>
-      <p >${post.user}</p>
-      <button class='buttonEdit'>Editar<button>
-    </article>`;
+      const articlePost = document.createElement('article');
+      articlePost.classList.add('articlePost');
+      const textPost = document.createElement('p');
+      textPost.textContent = post.newPost;
+      textPost.classList.add('textPost');
+      const textUser = document.createElement('p');
+      textUser.classList.add('textUser');
+      textUser.textContent = post.user;
+//crear el icono like   post.like(RETORNA EL NUMERO)
+      if (user.email === post.user) {
+        const buttonDelete = document.createElement('button');
+        buttonDelete.classList.add('buttonDelete');
+        buttonDelete.textContent = ('ELIMINAR');
+        buttonDelete.addEventListener('click', () => {
+          deleteCollection(doc.id);
+        });
+        //crear boton editar 
+        articlePost.append(textPost, textUser, buttonDelete);
+      } else {
+        articlePost.append(textPost, textUser);
+      }
+      sectionPost.append(articlePost);
     });
-    sectionPost.innerHTML = html;
-    const buttonEdit = sectionPost.querySelectorAll('.buttonEdit');
-    buttonEdit.addEventListener
   });
 
   // funcionalidad para eliminar publicacion
