@@ -1,8 +1,8 @@
 import {
-  createCollection, onGetPost, auth, deleteCollection,
+  createCollection, onGetPost, auth, deleteCollection, updatePost, signOutSeniorFace,
 } from '../lib/index';
 
-export function home() {
+export function home(navigatoTo) {
 // Creación del body
   const bodyHome = document.createElement('body');
   bodyHome.classList.add('bodyHome');
@@ -17,7 +17,12 @@ export function home() {
   divUserName.classList.add('divUserName');
   const userName = document.createElement('span');
   divUserName.append(userName);
-  navHome.append(titleHome, divUserName);
+  const divSignOut = document.createElement('div');
+  divSignOut.classList.add('divSignOut');
+  const spanSignOut = document.createElement('span');
+  spanSignOut.textContent = 'Cerrar Sesión';
+  divSignOut.append(spanSignOut);
+  navHome.append(titleHome, divUserName, divSignOut);
 
   // Creación del main
   const mainHome = document.createElement('main');
@@ -89,11 +94,19 @@ export function home() {
   // Pintar post al refrescar pantalla
   // window.addEventListener('DOMContentLoaded', async () => {
   //----------------------------------
-
+  // Función para cerrar Sesion
+  divSignOut.addEventListener('click', () => {
+    signOutSeniorFace(navigatoTo('/login'));
+  });
   // se modificando del la plantilla a crear todos los elecmentos
+
+  let editing = false;
+  let id = '';
 
   onGetPost((querySnapshot) => {
     const user = auth.currentUser;
+    console.log('probando', user);
+    console.log('probando2', querySnapshot);
     sectionPost.innerHTML = '';
     querySnapshot.forEach((doc) => {
       const post = doc.data();
@@ -104,7 +117,8 @@ export function home() {
       textPost.classList.add('textPost');
       const textUser = document.createElement('p');
       textUser.classList.add('textUser');
-      textUser.textContent = post.user;
+      const userNamePrint = post.user.split('@', 1);
+      textUser.textContent = userNamePrint[0];
       // crear el icono like   post.like(RETORNA EL NUMERO)
       if (user.email === post.user) {
         const buttonDelete = document.createElement('button');
@@ -113,8 +127,19 @@ export function home() {
         buttonDelete.addEventListener('click', () => {
           deleteCollection(doc.id);
         });
+        // button edit
+        const buttonEdit = document.createElement('button');
+        buttonEdit.classList.add('buttonEdit');
+        buttonEdit.textContent = 'Editar';
+        buttonEdit.addEventListener('click', () => {
+          console.log(doc.id);
+          editing = true;
+          inputToPost.textContent = post.newPost;
+          id = doc.id;
+        });
         // crear boton editar
         articlePost.append(textPost, textUser, buttonDelete);
+        articlePost.append(textPost, textUser, buttonEdit);
       } else {
         articlePost.append(textPost, textUser);
       }
@@ -127,11 +152,20 @@ export function home() {
   // crecion de eventos
   formToPost.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    const newPost = {
-      content: inputToPost.value,
-    };
-    createCollection(newPost.content);
+    if (!editing) {
+      const newPost = {
+        content: inputToPost.value,
+      };
+      createCollection(newPost.content);
+    } else {
+      console.log('hola', id);
+      // console.log(newPost.content);
+      updatePost(id, { newPost: inputToPost.value });
+      editing = false;
+      inputToPost.textContent = '';
+    }
+    console.log('editando');
+    formToPost.reset();
   });
 
   // funcion de elimiar

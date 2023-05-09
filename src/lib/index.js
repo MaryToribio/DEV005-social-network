@@ -6,10 +6,19 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  signOut,
 } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js';
 
 import {
-  getFirestore, collection, query, orderBy, onSnapshot, addDoc, doc, deleteDoc, updateDoc,
+  getFirestore,
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  addDoc,
+  doc,
+  deleteDoc,
+  updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js';
 // import register from '../components/register';
 // TODO: Add SDKs for Firebase products that you want to use
@@ -48,10 +57,16 @@ export function validateUserAndPasswordFireBase(user, password) {
 }
 console.log('promesa', signInWithEmailAndPassword);
 
+// Funión para cerrar cesión
+export const signOutSeniorFace = (goToHome) => {
+  signOut(auth)
+    .then(() => goToHome)
+    .catch((err) => { console.error(err); });
+};
 // funciones para publicar
 
 const db = getFirestore();
-
+console.log('verificando',auth)
 export const createCollection = (newPost) => {
   addDoc(collection(db, 'post'), {
     newPost,
@@ -75,6 +90,6 @@ export const onGetPost = (callback) => onSnapshot(getPost, callback);
 
 // para editar el post
 
-export const updatePost = (postID, newPostValue) => {
-  updateDoc(postID, { newPost: newPostValue });
+export const updatePost = (id, newPostValue) => {
+  updateDoc(doc(db, 'post', id), newPostValue);
 };
