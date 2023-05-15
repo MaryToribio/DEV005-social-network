@@ -19,6 +19,8 @@ import {
   doc,
   deleteDoc,
   updateDoc,
+  arrayRemove,
+  arrayUnion,
 } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js';
 // import register from '../components/register';
 // TODO: Add SDKs for Firebase products that you want to use
@@ -66,14 +68,19 @@ export const signOutSeniorFace = (goToHome) => {
 // funciones para publicar
 
 const db = getFirestore();
-console.log('verificando',auth)
+console.log('verificando', auth);
+
 export const createCollection = (newPost) => {
-  addDoc(collection(db, 'post'), {
-    newPost,
-    user: auth.currentUser.email,
-    dateCreated: new Date(),
-    like: 0,
-  });
+  if (newPost !== '') {
+    addDoc(collection(db, 'post'), {
+      newPost,
+      user: auth.currentUser.email,
+      dateCreated: new Date(),
+    });
+  } else {
+    alert('Aún no ha escrito nada por compartir');
+  }
+
   console.log(auth.currentUser.email);
 };
 
@@ -93,3 +100,13 @@ export const onGetPost = (callback) => onSnapshot(getPost, callback);
 export const updatePost = (id, newPostValue) => {
   updateDoc(doc(db, 'post', id), newPostValue);
 };
+
+// para dar like
+export const addLike = (id, userEmail) => updateDoc(doc(db, 'post', id), {
+  likes: arrayUnion(userEmail),
+});
+
+// para quitar like
+export const removeLike = (id, userEmail) => updateDoc(doc(db, 'post', id), {
+  likes: arrayRemove(userEmail),
+});
