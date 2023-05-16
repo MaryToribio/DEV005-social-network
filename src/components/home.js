@@ -1,5 +1,12 @@
 import {
-  createCollection, onGetPost, auth, deleteCollection, updatePost, signOutSeniorFace,
+  createCollection,
+  onGetPost,
+  auth,
+  deleteCollection,
+  updatePost,
+  signOutSeniorFace,
+  removeLike,
+  addLike,
 } from '../lib/index';
 
 export function home(navigatoTo) {
@@ -70,16 +77,6 @@ export function home(navigatoTo) {
   const sectionPost = document.createElement('section');
   sectionPost.classList.add('sectionPost');
 
-  // crear boton para eliminar post
-
-  // icono de la parte superior
-  /* const divLogoHome = document.createElement('div');
-  divLogoHome.classList.add('divLogoHome');
-  const imgLogoHome = document.createElement('img');
-  imgLogoHome.src = './img/iconoLogin.png';
-  divLogoHome.append(imgLogoHome);
-  sectionToPost.append(divLogoHome); */
-
   // Ingreso de elementos en mainHome
   mainHome.append(sectionToPost, sectionPost);
 
@@ -91,9 +88,6 @@ export function home(navigatoTo) {
   // --------------------------------------------------------------
   // ---------------------------------------------------------------
 
-  // Pintar post al refrescar pantalla
-  // window.addEventListener('DOMContentLoaded', async () => {
-  //----------------------------------
   // Función para cerrar Sesion
   divSignOut.addEventListener('click', () => {
     signOutSeniorFace(navigatoTo('/login'));
@@ -119,27 +113,75 @@ export function home(navigatoTo) {
       textUser.classList.add('textUser');
       const userNamePrint = post.user.split('@', 1);
       textUser.textContent = userNamePrint[0];
+      // Creación de modal para eliminar post
+      const buttonModalDelete = document.createElement('i');
+      buttonModalDelete.classList.add('fa-regular');
+      buttonModalDelete.classList.add('fa-trash-can');
+      const modalDelete = document.createElement('section');
+      modalDelete.classList.add('modalDelete');
+      const divModal = document.createElement('div');
+      divModal.classList.add('divModal');
+      const textDelete = document.createElement('span');
+      textDelete.textContent = '¿Estás segura de eliminar esta publicación?';
+      const buttonClose = document.createElement('button');
+      buttonClose.classList.add('buttonClose');
+      buttonClose.textContent = 'No, cerrar';
+      const buttonDelete = document.createElement('button');
+      buttonDelete.classList.add('buttonDelete');
+      buttonDelete.textContent = ('Si, aceptar');
+      divModal.append(textDelete, buttonDelete, buttonClose);
+      modalDelete.append(divModal);
+      buttonModalDelete.addEventListener('click', (e) => {
+        e.preventDefault();
+        modalDelete.classList.add('modalShow');
+        console.log('se pudo burro');
+      });
+      buttonClose.addEventListener('click', () => {
+        modalDelete.classList.remove('modalShow');
+      });
+
       // crear el icono like   post.like(RETORNA EL NUMERO)
+   
+      const buttonLike = document.createElement('i');
+      buttonLike.classList.add('fa-regular');
+      buttonLike.classList.add('fa-thumbs-up');
+
+      articlePost.append(buttonLike);
+
+      const spanLike = document.createElement('span');
+      spanLike.innerHTML = '(0)';
+      if (post.likes !== undefined) {
+        spanLike.innerHTML = `(${post.likes.length})`;
+      }
+      articlePost.append(spanLike);
+
+      buttonLike.addEventListener('click', () => {
+        if (post.likes !== undefined && post.likes.includes(user.email)) {
+          removeLike(doc.id, user.email);
+        } else {
+          addLike(doc.id, user.email);
+        }
+      });
       if (user.email === post.user) {
-        const buttonDelete = document.createElement('button');
-        buttonDelete.classList.add('buttonDelete');
-        buttonDelete.textContent = ('ELIMINAR');
+        userName.textContent = userNamePrint[0];
         buttonDelete.addEventListener('click', () => {
           deleteCollection(doc.id);
+          modalDelete.classList.remove('modalShow');
         });
         // button edit
-        const buttonEdit = document.createElement('button');
-        buttonEdit.classList.add('buttonEdit');
-        buttonEdit.textContent = 'Editar';
+        const buttonEdit = document.createElement('i');
+        buttonEdit.classList.add('fa-regular');
+        buttonEdit.classList.add('fa-pen-to-square');
         buttonEdit.addEventListener('click', () => {
           console.log(doc.id);
           editing = true;
           inputToPost.textContent = post.newPost;
           id = doc.id;
         });
+
         // crear boton editar
-        articlePost.append(textPost, textUser, buttonDelete);
-        articlePost.append(textPost, textUser, buttonEdit);
+        articlePost.append(textPost, textUser, buttonEdit, buttonModalDelete);
+        mainHome.append(modalDelete);
       } else {
         articlePost.append(textPost, textUser);
       }
