@@ -961,6 +961,11 @@
         z-index: 0;
         
     }
+    .userNameComplete{
+        outline: 2px solid red;
+        width: 200px;
+        height: 50px;
+    }
     .textUser{
        
         background-color: rgb(246, 210, 101);

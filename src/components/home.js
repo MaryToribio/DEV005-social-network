@@ -35,18 +35,6 @@ export function home(navigatoTo) {
   const mainHome = document.createElement('main');
   mainHome.classList.add('mainHome');
 
-  // Creación de Seccion para el usuario
-  /* const sectionUser = document.createElement('section');
-  const articleUser = document.createElement('article');
-  articleUser.classList.add('articleUser');
-  const labelUser = document.createElement('label');
-  const inputlUserPost = document.createElement('input');
-  inputlUserPost.classList.add('inputUserPost');
-  const buttonSendPost = document.createElement('button');
-  buttonSendPost.textContent = 'Enviar';
-  articleUser.append(labelUser, inputlUserPost, buttonSendPost);
-  sectionUser.append(articleUser); */
-
   // Creación de sección para post
   const sectionToPost = document.createElement('section');
   sectionToPost.classList.add('sectionToPost');
@@ -92,7 +80,7 @@ export function home(navigatoTo) {
   divSignOut.addEventListener('click', () => {
     signOutSeniorFace(navigatoTo('/login'));
   });
-  // se modificando del la plantilla a crear todos los elecmentos
+
 
   let editing = false;
   let id = '';
@@ -109,10 +97,21 @@ export function home(navigatoTo) {
       const textPost = document.createElement('p');
       textPost.textContent = post.newPost;
       textPost.classList.add('textPost');
-      const textUser = document.createElement('p');
+      const textUser = document.createElement('span');
       textUser.classList.add('textUser');
       const userNamePrint = post.user.split('@', 1);
-      textUser.textContent = userNamePrint[0];
+      const userNameToPrint = userNamePrint[0];
+ 
+      const userNameComplete = document.createElement('span');
+      userNameComplete.classList.add('userNameComplete');
+      userNameComplete.textContent = userNameToPrint;
+      textUser.textContent = userNameToPrint.charAt(0).toUpperCase();
+      const datePost = doc.data().dateCreated.toDate();
+      const optionDate = { year: 'numeric', month: 'long', day: 'numeric' };
+      const datePrint = datePost.toLocaleDateString('es-ES', optionDate);
+      const datePrinted = document.createElement('span');
+      datePrinted.textContent = datePrint;
+
       // Creación de modal para eliminar post
       const buttonModalDelete = document.createElement('i');
       buttonModalDelete.classList.add('fa-regular');
@@ -141,7 +140,7 @@ export function home(navigatoTo) {
       });
 
       // crear el icono like   post.like(RETORNA EL NUMERO)
-   
+
       const buttonLike = document.createElement('i');
       buttonLike.classList.add('fa-regular');
       buttonLike.classList.add('fa-thumbs-up');
@@ -180,10 +179,17 @@ export function home(navigatoTo) {
         });
 
         // crear boton editar
-        articlePost.append(textPost, textUser, buttonEdit, buttonModalDelete);
+        articlePost.append(
+          userNameComplete,
+          textPost,
+          datePrinted,
+          textUser,
+          buttonEdit,
+          buttonModalDelete,
+        );
         mainHome.append(modalDelete);
       } else {
-        articlePost.append(textPost, textUser);
+        articlePost.append(userNameComplete, textPost, datePrinted, textUser);
       }
       sectionPost.append(articlePost);
     });
@@ -198,7 +204,8 @@ export function home(navigatoTo) {
       const newPost = {
         content: inputToPost.value,
       };
-      createCollection(newPost.content);
+      createCollection(newPost.content, formToPost);
+      
     } else {
       console.log('hola', id);
       // console.log(newPost.content);

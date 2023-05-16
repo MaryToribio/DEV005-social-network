@@ -70,7 +70,7 @@ export const signOutSeniorFace = (goToHome) => {
 const db = getFirestore();
 console.log('verificando', auth);
 
-export const createCollection = (newPost) => {
+export const createCollection = (newPost, insertMessage) => {
   if (newPost !== '') {
     addDoc(collection(db, 'post'), {
       newPost,
@@ -78,7 +78,11 @@ export const createCollection = (newPost) => {
       dateCreated: new Date(),
     });
   } else {
-    alert('Aún no ha escrito nada por compartir');
+    const printMessege = document.createElement('span');
+    printMessege.textContent = 'El campo se encuentra vacío, comparte lo que piensas con nuestra comunidad';
+    setTimeout(() => { insertMessage.removeChild(printMessege); }, 4000)
+    insertMessage.append(printMessege);
+    
   }
 
   console.log(auth.currentUser.email);
