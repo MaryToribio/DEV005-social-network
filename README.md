@@ -1,6 +1,6 @@
 RED SOCIAL  (SENIOR FACE)
 Índice
-1. SENIOR FACE
+1. Senir-Face
 2. Prototipos
 3. Historias de Usuario
 4. Deploy
