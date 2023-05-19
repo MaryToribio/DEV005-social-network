@@ -10,7 +10,7 @@ RED SOCIAL
  
 -------------------------------------------------------------------------------------------------------------------------------------
 
-1.- Senior Face
+## 1. Senior Face
 
 Senior Face: una red social diseñada especialmente para personas mayores. En un mundo cada vez más conectado, es común que ciertos grupos de la sociedad se sientan excluidos o abandonados, especialmente aquellos que creen que sus vidas han llegado a su fin. Senior Face busca solucionar este problema al brindar un espacio digital donde las personas mayores pueden interactuar, compartir sus experiencias y sentirse acompañadas, estableciendo su propia sociedad virtual.
 
