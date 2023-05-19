@@ -18,7 +18,7 @@ En esta red social, los usuarios tienen la posibilidad de realizar diversas acci
 
 Senior Face utiliza la base de datos de Firebase, una poderosa plataforma de desarrollo de aplicaciones móviles y web. Esto permite un almacenamiento seguro y escalable de la información de los usuarios, así como una rápida recuperación de datos para garantizar una experiencia fluida y confiable.
 
-2. Prototipos
+## 2. Prototipos
 2.1.- Prototipo baja fidelidad
 Movil y Desktop
 
