@@ -61,29 +61,29 @@ Se realizaron test de usabilidad para saber la opinión de los usuarios sobre la
 Usuario 1 
 Cambios realizados:
 
-# Que la palabra "Registrar ahora" resalte cuando el puntero pase sobre ella
-# Que el botón Guardar e Ingresar, así como los espacios para colocar el Correo Electrónico y la Contraseña generen alguna reacción cuando el puntero pase sobre ellos
+* Que la palabra "Registrar ahora" resalte cuando el puntero pase sobre ella
+* Que el botón Guardar e Ingresar, así como los espacios para colocar el Correo Electrónico y la Contraseña generen alguna reacción cuando el puntero pase sobre ellos
 
 
 Usuario 2 
 Cambios realizados:
 
-# Cuando le de guardar en el cuadro de publicar seria bueno que el cuadro se cerrara
-# En el momento de eliminar un test, deberia de aparecer un mensaje para asegurarse de querer borrar la publicacion
-# Cuando estaba editando y le di al boton guardar, como el cuadro seguia mostrandose pense que no habia guardado, seria bueno que cuando se de click se cierre ese cuadro.
+* Cuando le de guardar en el cuadro de publicar seria bueno que el cuadro se cerrara
+* En el momento de eliminar un test, deberia de aparecer un mensaje para asegurarse de querer borrar la publicacion
+* Cuando estaba editando y le di al boton guardar, como el cuadro seguia mostrandose pense que no habia guardado, seria bueno que cuando se de click se cierre ese cuadro.
 
 Usuario 3 
 Cambios realizados:
 
-# Cuando se va a publicar por segunda vez, la informacion de la primera publicacion sigue en el cuadro
-# Cuando se va a editar una publicacion y luego se guarda el cuadro sigue puesto y no se cierra
+* Cuando se va a publicar por segunda vez, la informacion de la primera publicacion sigue en el cuadro
+* Cuando se va a editar una publicacion y luego se guarda el cuadro sigue puesto y no se cierra
 
 Usuario 4 
 Cambios realizados:
 
-# Corregir alineación de los iconos del logueo de las redes sociales
-# Que los mensajes de error se muestren debajo de los casillas donde se ingresa el correo y la contraseña
-# Agregar un botón de retorno a la página de login y registro hacia la página de bienvenida
+* Corregir alineación de los iconos del logueo de las redes sociales
+* Que los mensajes de error se muestren debajo de los casillas donde se ingresa el correo y la contraseña
+* Agregar un botón de retorno a la página de login y registro hacia la página de bienvenida
 
 
 Autoras
