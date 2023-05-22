@@ -8,7 +8,9 @@ export function register(navigateTo) {
   // Creación de containerRight
   const containerRight = document.createElement('section');
   containerRight.classList.add('containerRight');
-
+  const iconComeBack = document.createElement('i');
+  iconComeBack.classList.add('fa-solid');
+  iconComeBack.classList.add('fa-reply-all');
   const titleRegister = document.createElement('span');
   titleRegister.classList.add('titleRegister');
   titleRegister.textContent = 'Registrarse';
@@ -26,9 +28,10 @@ export function register(navigateTo) {
   const labelCorreo = document.createElement('label');
   labelCorreo.textContent = 'INSERTAR CORREO ELECTRÓNICO';
   const inputInsertCorreo = document.createElement('input');
+  inputInsertCorreo.classList.add('inputInsertCorreo');
   inputInsertCorreo.name = 'correo';
   inputInsertCorreo.placeholder = 'another@example.com';
-  const errorMessageEmail = document.createElement('small');
+  const errorMessageEmail = document.createElement('span');
   errorMessageEmail.textContent = '';
   listInputCorreo.append(labelCorreo, inputInsertCorreo, errorMessageEmail);
 
@@ -39,9 +42,11 @@ export function register(navigateTo) {
   const labelPassword = document.createElement('label');
   labelPassword.textContent = 'INSERTAR CONTRASEÑA';
   const inputInsertPassword = document.createElement('input');
+  inputInsertPassword.type = 'password';
   inputInsertPassword.name = 'password';
+  inputInsertPassword.classList.add('inputInsertPassword');
   inputInsertPassword.placeholder = 'mínimo 6 dígitos';
-  const errorMessagePassword = document.createElement('small');
+  const errorMessagePassword = document.createElement('span');
   errorMessagePassword.textContent = '';
   listInputPassword.append(labelPassword, inputInsertPassword, errorMessagePassword);
 
@@ -110,7 +115,7 @@ export function register(navigateTo) {
   divTitleLogo.append(titleLogo);
 
   // ContainerRight
-  containerRight.append(divLogoRegister, formRegister);
+  containerRight.append(iconComeBack, divLogoRegister, formRegister);
   // ContainerLeft
   containerLeft.append(divContainerPhrase, imgSeniorFace, divTitleLogo);
 
@@ -118,6 +123,7 @@ export function register(navigateTo) {
 
   // //=======================================================================================//
   // Validación de inputs
+  iconComeBack.addEventListener('click', () => navigateTo('/login'));
 
   const listInputs = [inputInsertCorreo, inputInsertPassword];
   console.log('prueba 0', listInputs);
@@ -126,15 +132,15 @@ export function register(navigateTo) {
   function errorInput(input, messageError) {
     const listInput = input.parentElement;
     listInput.className = 'listInput error';
-    const small = listInput.querySelector('small');
+    const span = listInput.querySelector('span');
     listInput.classList.add('error');
-    small.innerText = messageError;
+    span.innerText = messageError;
   }
 
   function succesInput(input) {
     const listInput = input.parentElement;
     listInput.classList.add('success');
-    listInput.querySelector('small').innerText = '';
+    listInput.querySelector('span').innerText = '';
   }
   function cleanInputs(input) {
     const listInput = input.parentElement;

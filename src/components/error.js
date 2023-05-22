@@ -5,4 +5,3 @@ export function error() {
   section.append(title);
   return section;
 }
- 

@@ -1,5 +1,5 @@
 // aqui exportaras las funciones que necesites (se borro los modulos que no se usan)
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js';
+import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -7,7 +7,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
-} from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js';
+} from 'firebase/auth';
 
 import {
   getFirestore,
@@ -21,7 +21,7 @@ import {
   updateDoc,
   arrayRemove,
   arrayUnion,
-} from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js';
+} from 'firebase/firestore';
 // import register from '../components/register';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -79,10 +79,10 @@ export const createCollection = (newPost, insertMessage) => {
     });
   } else {
     const printMessege = document.createElement('span');
+    printMessege.classList.add('printMessege');
     printMessege.textContent = 'El campo se encuentra vacío, comparte lo que piensas con nuestra comunidad';
-    setTimeout(() => { insertMessage.removeChild(printMessege); }, 4000)
+    setTimeout(() => { insertMessage.removeChild(printMessege); }, 4000);
     insertMessage.append(printMessege);
-    
   }
 
   console.log(auth.currentUser.email);

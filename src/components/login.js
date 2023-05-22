@@ -49,9 +49,10 @@ function login(navigateTo) {
   const labelCorreo = document.createElement('label');
   labelCorreo.textContent = 'INSERTAR CORREO ELECTRÓNICO';
   const inputInsertCorreo = document.createElement('input');
+  inputInsertCorreo.id = 'email';
   inputInsertCorreo.name = 'correo';
   inputInsertCorreo.placeholder = 'another@example.com';
-  const errorMessageEmail = document.createElement('small');
+  const errorMessageEmail = document.createElement('span');
   errorMessageEmail.textContent = '';
   listInputCorreo.append(labelCorreo, inputInsertCorreo, errorMessageEmail);
 
@@ -64,8 +65,9 @@ function login(navigateTo) {
   const inputInsertPassword = document.createElement('input');
   inputInsertPassword.type = 'password';
   inputInsertPassword.name = 'password';
+  inputInsertPassword.id = 'password';
   inputInsertPassword.placeholder = 'mínimo 6 dígitos';
-  const errorMessagePassword = document.createElement('small');
+  const errorMessagePassword = document.createElement('span');
   errorMessagePassword.textContent = '';
   listInputPassword.append(labelPassword, inputInsertPassword, errorMessagePassword);
 
@@ -149,17 +151,18 @@ function login(navigateTo) {
   // Validación de input vacio - funcion para mostrar correcto
   function errorInput(input, messageError) {
     const listInput = input.parentElement;
-    listInput.className = 'listInput error';
-    const small = listInput.querySelector('small');
     listInput.classList.add('error');
+    console.log(listInput);
+    const small = listInput.querySelector('span');
     small.innerText = messageError;
   }
 
   function succesInput(input) {
     const listInput = input.parentElement;
     listInput.classList.add('success');
-    listInput.querySelector('small').innerText = '';
+    listInput.querySelector('span').innerText = '';
   }
+
   function cleanInputs(input) {
     const listInput = input.parentElement;
     listInput.classList.remove('success');
@@ -197,8 +200,7 @@ function login(navigateTo) {
 
   // Evento para cada input
   listInputs.forEach((input) => {
-    input.addEventListener('keyup', validInputs);
-    input.addEventListener('blur', validInputs);
+    input.addEventListener('input', validInputs);
   });
 
   // Funciones de firebase
@@ -206,14 +208,11 @@ function login(navigateTo) {
     e.preventDefault();
     const valueCorreo = inputInsertCorreo.value.trim();
     const valuePassword = inputInsertPassword.value.trim();
-    const validCorreo = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    const validCorreo = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     const validPassword = /^.{6,12}$/;
 
-    if (validCorreo.test(inputInsertCorreo.value) === false
-     && validPassword.test(inputInsertPassword.value) === false) {
-      errorInput(inputInsertCorreo, 'Los campos aún no han sido llenados');
-      errorInput(inputInsertPassword, 'Los campos aún no han sido llenados');
-    } else {
+    if (validCorreo.test(inputInsertCorreo.value) === true
+    && validPassword.test(inputInsertPassword.value) === true) {
       console.log('probandofirebase');
 
       validateUserAndPasswordFireBase(valueCorreo, valuePassword)
@@ -223,7 +222,7 @@ function login(navigateTo) {
           console.log(result);
         })
         .catch((err) => {
-          console.error(err);
+          console.log(`Error ${err}`);
           const emailInvalid = document.createElement('div');
           emailInvalid.classList.add('emailInvalid');
           const messageInvalid = document.createElement('span');
@@ -232,10 +231,18 @@ function login(navigateTo) {
           formLogin.append(emailInvalid);
           setTimeout(() => { formLogin.removeChild(emailInvalid); }, 4000);
         });
+
+      formLogin.reset();
+      cleanInputs(inputInsertCorreo);
+      cleanInputs(inputInsertPassword);
+    } else {
+      if (validCorreo.test(inputInsertCorreo.value) === false) {
+        errorInput(inputInsertCorreo, 'Los campos aún no han sido llenados');
+      }
+      if (validPassword.test(inputInsertPassword.value) === false) {
+        errorInput(inputInsertPassword, 'Los campos aún no han sido llenados');
+      }
     }
-    formLogin.reset();
-    cleanInputs(inputInsertCorreo);
-    cleanInputs(inputInsertPassword);
     console.log('selogro');
   });
 

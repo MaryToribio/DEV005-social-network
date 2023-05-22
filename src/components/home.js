@@ -41,7 +41,7 @@ export function home(navigatoTo) {
   const formToPost = document.createElement('form');
   formToPost.classList.add('formToPost');
   const labelToPost = document.createElement('label');
-  labelToPost.textContent = '¿QUE COMPARTIRAS HOY?';
+  labelToPost.textContent = '¿Qué deseas compartir hoy?';
   const inputToPost = document.createElement('textarea');
   inputToPost.classList.add('inputToPost');
   inputToPost.placeholder = '';
@@ -81,7 +81,6 @@ export function home(navigatoTo) {
     signOutSeniorFace(navigatoTo('/login'));
   });
 
-
   let editing = false;
   let id = '';
 
@@ -101,7 +100,7 @@ export function home(navigatoTo) {
       textUser.classList.add('textUser');
       const userNamePrint = post.user.split('@', 1);
       const userNameToPrint = userNamePrint[0];
- 
+
       const userNameComplete = document.createElement('span');
       userNameComplete.classList.add('userNameComplete');
       userNameComplete.textContent = userNameToPrint;
@@ -110,6 +109,7 @@ export function home(navigatoTo) {
       const optionDate = { year: 'numeric', month: 'long', day: 'numeric' };
       const datePrint = datePost.toLocaleDateString('es-ES', optionDate);
       const datePrinted = document.createElement('span');
+      datePrinted.classList.add('datePrinted');
       datePrinted.textContent = datePrint;
 
       // Creación de modal para eliminar post
@@ -130,6 +130,7 @@ export function home(navigatoTo) {
       buttonDelete.textContent = ('Si, aceptar');
       divModal.append(textDelete, buttonDelete, buttonClose);
       modalDelete.append(divModal);
+
       buttonModalDelete.addEventListener('click', (e) => {
         e.preventDefault();
         modalDelete.classList.add('modalShow');
@@ -149,6 +150,7 @@ export function home(navigatoTo) {
 
       const spanLike = document.createElement('span');
       spanLike.innerHTML = '(0)';
+      spanLike.classList.add('spanLike');
       if (post.likes !== undefined) {
         spanLike.innerHTML = `(${post.likes.length})`;
       }
@@ -161,8 +163,9 @@ export function home(navigatoTo) {
           addLike(doc.id, user.email);
         }
       });
+
       if (user.email === post.user) {
-        userName.textContent = userNamePrint[0];
+        userName.textContent = userNameToPrint;
         buttonDelete.addEventListener('click', () => {
           deleteCollection(doc.id);
           modalDelete.classList.remove('modalShow');
@@ -205,15 +208,12 @@ export function home(navigatoTo) {
         content: inputToPost.value,
       };
       createCollection(newPost.content, formToPost);
-      
     } else {
       console.log('hola', id);
-      // console.log(newPost.content);
       updatePost(id, { newPost: inputToPost.value });
       editing = false;
       inputToPost.textContent = '';
     }
-    console.log('editando');
     formToPost.reset();
   });
 
