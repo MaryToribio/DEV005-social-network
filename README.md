@@ -20,25 +20,15 @@ Para almacenar y gestionar la información de los usuarios, Senior Face utiliza 
 ## 2. Prototipos
 ### 2.1. Prototipo baja fidelidad
 #### Movil 
-![](PROTOTIPO-BAJA FIDELIDAD_MOVIL.jpg)
-![](PROTOTIPO-ALTAFIDELIDAD_DESKTOP.jpg)
-![](./img/PROTOTIPO ALTAFIDELIDAD_MOVIL.jpg)
-
-
-
-
-
-
+![](PROTOTIPO-BAJA FIDELIDAD_MOVIL.png)
 
 ### 2.2. Prototipo alta fidelidad (FIGMA)
-Movil y Desktop
 
+#### Movil 
+![](PROTOTIPO-ALTAFIDELIDAD_MOVIL.jpg)
 
-
-
-
-
-
+#### Desktop 
+![](PROTOTIPO-ALTAFIDELIDAD_DESKTOP.jpg)
 
 ## 3. Historias de Usuario
 Para iniciar con el desarrollo de la página web, se realizó una encuesta a un grupo de posibles usuarios con la finalidad de conocer sus preferencias o expectativas. Para ello se les pidió que completaran el siguiente formulario. A partir de ella y teniendo en cuenta los principales requerimientos del proyecto, creamos las siguientes historias de usuario.
