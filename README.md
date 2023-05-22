@@ -34,20 +34,20 @@ Para almacenar y gestionar la información de los usuarios, Senior Face utiliza 
 Para iniciar con el desarrollo de la página web, se realizó una encuesta a un grupo de posibles usuarios con la finalidad de conocer sus preferencias o expectativas. Para ello se les pidió que completaran el siguiente formulario. A partir de ella y teniendo en cuenta los principales requerimientos del proyecto, creamos las siguientes historias de usuario.
 
 
-### 3.1. Historia de usuario: Publicar una experiencia de vida
-Como usuario de Senior Face, quiero poder compartir mis experiencias de vida con otros miembros de la comunidad. Quiero redactar un nuevo post, adjuntar fotos relevantes y publicarlo para que otros usuarios puedan leerlo y comentar.
+### 3.1. Historia de usuario 01: Crear e ingresar a la plataforma.
+Como usuario de Senior Face, deseo poder crear una cuanta e iniciar sesión en la plataforma de la red social.
 
-### 3.2. Historia de usuario: Eliminar un post no deseado
-Como usuario de Senior Face, a veces puedo cometer errores al publicar o simplemente cambiar de opinión sobre un post. Quiero tener la opción de eliminar un post que considero innecesario o que ya no quiero que esté visible en la red social. Al eliminar el post, desaparecerá de mi perfil y de la vista de otros usuarios.
+### 3.2. Historia de usuario 02: Validación de datos.
+Como usuario de Senior Face, deseo que se me muestre claramente si estoy cometiendo un error al ingresar mis datos al momento de iniciar sesión y resgistrarme.
 
-### 3.3. Historia de usuario: Editar un post existente
+### 3.3. Historia de usuario 03: Eliminar un post no deseado
+Como usuario de Senior Face, a veces puedo cometer errores al publicar o simplemente cambiar de opinión sobre un post. Quiero tener la opción de eliminar mi post que considero innecesario o que ya no quiero que esté visible en la red social. Al eliminar el post, desaparecerá de mi perfil y de la vista de otros usuarios.
+
+### 3.4. Historia de usuario 04: Editar un post existente
 Como usuario de Senior Face, puedo querer hacer modificaciones en un post que ya he publicado. Por ejemplo, puedo detectar errores ortográficos o agregar información adicional que haya olvidado mencionar. Quiero tener la capacidad de editar mis posts anteriores para mantener la precisión y calidad de mis publicaciones.
 
-### 3.4. Historia de usuario: Dar "me gusta" a un post interesante
+### 3.4. Historia de usuario 05: Dar "me gusta" a un post interesante
 Como usuario de Senior Face, me gusta apreciar y mostrar mi interés por las publicaciones de otros miembros de la comunidad. Quiero tener la opción de dar "me gusta" a los posts que encuentro interesantes o con los que me identifico. Al dar "me gusta", quiero que el autor del post reciba una notificación y pueda ver la cantidad de apreciación que ha recibido.
-
-
-
 
 ## 4. Test de usabilidad
 Se realizaron test de usabilidad para saber la opinión de los usuarios sobre la página, obteniendo los siguientes resultados:
@@ -80,7 +80,11 @@ Cambios realizados:
 * Agregar un botón de retorno a la página de login y registro hacia la página de bienvenida
 
 
-Autoras
+
+## 5. Link de proyecto
+
+
+## 6. Autoras
 
 Carol Raquel
 
