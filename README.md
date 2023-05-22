@@ -21,7 +21,7 @@ Para almacenar y gestionar la información de los usuarios, Senior Face utiliza 
 ### 2.1. Prototipo baja fidelidad
 #### Movil 
 ![](PROTOTIPO-BAJA FIDELIDAD_MOVIL.jpg)
-![](src/img/PROTOTIPO ALTAFIDELIDAD_MOVIL.jpg)
+![](PROTOTIPO-ALTAFIDELIDAD_DESKTOP.jpg)
 ![](./img/PROTOTIPO ALTAFIDELIDAD_MOVIL.jpg)
 
 
