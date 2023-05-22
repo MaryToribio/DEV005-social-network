@@ -22,7 +22,7 @@ Para almacenar y gestionar la información de los usuarios, Senior Face utiliza 
 #### Movil 
 ![](PROTOTIPO-BAJA FIDELIDAD_MOVIL.jpg)
 ![](src/img/PROTOTIPO ALTAFIDELIDAD_MOVIL.jpg)
- 
+![](./img/PROTOTIPO ALTAFIDELIDAD_MOVIL.jpg)
 
 
 
