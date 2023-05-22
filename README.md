@@ -82,7 +82,7 @@ Cambios realizados:
 
 
 ## 5. Link de proyecto
-
+https://seniorface-socialnetwork.firebaseapp.com/login
 
 ## 6. Autoras
 
