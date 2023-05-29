@@ -617,7 +617,7 @@
 @media (min-width:500px) {
     body {
         /* background-image: linear-gradient(rgb(22, 15, 10),rgba(41, 29, 19, 0.795)), url(./img/patron9.png);*/
-        background-image: url(./img/patron9.png);
+        background-image: url(/assets/patron9.77c4c6ac.png);
         background-size: 1200px 1000px;
         background-color: rgb(225, 215, 215);
         font-family: 'Roboto Flex', sans-serif;

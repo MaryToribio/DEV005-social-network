@@ -67,7 +67,7 @@ export function register(navigateTo) {
   buttonRegisterGoogle.textContent = 'Regístrate con Google';
   listButtonRegisterGoogle.append(buttonRegisterGoogle);
   const logoGoogle = document.createElement('img');
-  logoGoogle.src = './img/logoGoogle.png';
+  logoGoogle.src = 'https://i.ibb.co/D49QQs0/logo-Google.png';
   buttonRegisterGoogle.append(logoGoogle);
 
   // Input de linea separadora
@@ -102,7 +102,7 @@ export function register(navigateTo) {
   divContainerPhrase.append(contentPhrase);
   const imgSeniorFace = document.createElement('img');
   imgSeniorFace.classList.add('imgSeniorFace');
-  imgSeniorFace.src = './img/SeniorFace2.png';
+  imgSeniorFace.src = 'https://i.ibb.co/s9yvJRD/Senior-Face2.png';
   const divTitleLogo = document.createElement('div');
   divTitleLogo.classList.add('divTitleLogo');
   const titleLogo = document.createElement('span');
@@ -110,7 +110,7 @@ export function register(navigateTo) {
   const divLogoRegister = document.createElement('div');
   divLogoRegister.classList.add('divLogoRegister');
   const imageIcono = document.createElement('img');
-  imageIcono.src = './img/iconoLogin.png';
+  imageIcono.src = 'https://i.ibb.co/QDgJYPc/icono-Login.png';
   divLogoRegister.append(imageIcono);
   divTitleLogo.append(titleLogo);
 

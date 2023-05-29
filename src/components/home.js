@@ -35,7 +35,7 @@ export function home(navigatoTo) {
   const mainHome = document.createElement('main');
   mainHome.classList.add('mainHome');
 
-  // Creación de sección para post
+  // Creación de sección para postear
   const sectionToPost = document.createElement('section');
   sectionToPost.classList.add('sectionToPost');
   const formToPost = document.createElement('form');
@@ -50,18 +50,10 @@ export function home(navigatoTo) {
   buttonToPost.classList.add('buttonToPost');
   formToPost.append(labelToPost, inputToPost, buttonToPost);
 
-  // creacion de botones de reaccion
-  const buttonEmoticonDelete = document.createElement('button');
-  buttonEmoticonDelete.classList.add('buttonEmoticonDelete');
-
-  const buttonEmoticonEdit = document.createElement('button');
-  buttonEmoticonEdit.classList.add('buttonEmoticonEdit');
-
-  const buttonEmoticon = document.createElement('button');
-  buttonEmoticon.classList.add('buttonEmoticon');
-
-  // Ingresandoelementos a sectionToPost
+  // Ingresando elementos a sectionToPost
   sectionToPost.append(formToPost);
+
+  // Creación de sección de comentarios posteados
   const sectionPost = document.createElement('section');
   sectionPost.classList.add('sectionPost');
 
@@ -73,8 +65,7 @@ export function home(navigatoTo) {
     navHome,
     mainHome,
   );
-  // --------------------------------------------------------------
-  // ---------------------------------------------------------------
+  /* -------------------------Creación de funciones------------------------------------- */
 
   // Función para cerrar Sesion
   divSignOut.addEventListener('click', () => {
@@ -86,8 +77,9 @@ export function home(navigatoTo) {
 
   onGetPost((querySnapshot) => {
     const user = auth.currentUser;
-    console.log('probando', user);
+    console.log('probando1', user);
     console.log('probando2', querySnapshot);
+
     sectionPost.innerHTML = '';
     querySnapshot.forEach((doc) => {
       const post = doc.data();

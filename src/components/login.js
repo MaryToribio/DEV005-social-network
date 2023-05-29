@@ -11,7 +11,7 @@ function login(navigateTo) {
 
   // imagen de fondo del lado izquierdo
   const imgLogin = document.createElement('img');
-  imgLogin.src = './img/img3.png';
+  imgLogin.src = 'https://i.ibb.co/xLFZMGN/img3.webp';
   imgLogin.alt = 'Es una hija que muestra una aplicacion a su padre en un movil';
   imgLogin.classList.add('imgLogin');
   // divLeft.append(imgLogin);
@@ -96,7 +96,7 @@ function login(navigateTo) {
   buttonLoginGoogle.textContent = 'Inicia con Google';
   listButtonLoginGoogle.append(buttonLoginGoogle);
   const logoGoogle = document.createElement('img');
-  logoGoogle.src = './img/logoGoogle.png';
+  logoGoogle.src = 'https://i.ibb.co/D49QQs0/logo-Google.png';
   buttonLoginGoogle.append(logoGoogle);
 
   // Input de linea separadora
@@ -133,7 +133,7 @@ function login(navigateTo) {
   const divLogo = document.createElement('div');
   divLogo.classList.add('divLogo');
   const imgLogo = document.createElement('img');
-  imgLogo.src = './img/iconoLogin.png';
+  imgLogo.src = 'https://i.ibb.co/QDgJYPc/icono-Login.png';
   divLogo.append(imgLogo);
 
   divRight.append(divLogo, formLogin);
