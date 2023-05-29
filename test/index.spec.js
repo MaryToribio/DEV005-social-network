@@ -1,9 +1,12 @@
-// importamos la funcion que vamos a testear
-// import { myFunction } from '../src/lib/index';
 import { register } from '../src/components/register.js';
-// import { registerUser } from '../src/lib/index.js';
+import login from '../src/components/login.js';
+import * as auth from '../src/lib/index';
 
 describe('register', () => {
+  afterEach(() => {
+    document.body.innerHTML = '';
+  });
+
   it('debería ser una función', () => {
     expect(typeof register).toBe('function');
   });
@@ -30,72 +33,93 @@ describe('register', () => {
     iconComeBack.click();
     expect(navigateTo).toHaveBeenCalledWith('/login');
   });
+  it('Debe mostrar un error si los campos están vacíos', () => {
+    const DOM = document.createElement('div');
+    const navigateTo = jest.fn();
+    DOM.append(register(navigateTo));
+    const formRegister = DOM.querySelector('.formRegister');
+    // Simular envío del formulario con campos vacíos
+    formRegister.dispatchEvent(new Event('submit'));
+
+    const emailErrorMessage = DOM.querySelector('.inputInsertCorreo').parentElement.querySelector('span');
+    const passwordErrorMessage = DOM.querySelector('.inputInsertPassword').parentElement.querySelector('span');
+
+    expect(emailErrorMessage.innerText).toBe('Los campos aún no han sido llenados');
+    expect(passwordErrorMessage.innerText).toBe('Los campos aún no han sido llenados');
+  });
 });
 
-describe('funcion register', () => {
-  let containerSection;
+// ===================================
 
-  beforeEach(() => {
-    containerSection = register();
-    document.body.appendChild(containerSection);
-  });
-
+describe('Pruebas de login', () => {
   afterEach(() => {
     document.body.innerHTML = '';
   });
 
-  it('should display error message for empty email field', () => {
-    const inputInsertCorreo = containerSection.querySelector('.inputInsertCorreo');
-    const buttonRegister = containerSection.querySelector('.buttonRegister');
-    const errorMessageEmail = containerSection.querySelector('.listInput.error small');
-
-    inputInsertCorreo.value = '';
-    buttonRegister.click();
-
-    expect(errorMessageEmail.textContent).toBe('El campo está vacío');
-    expect(inputInsertCorreo.parentElement.classList.contains('error')).toBe(true);
+  it('is a function', () => {
+    expect(typeof login).toBe('function');
   });
 
-  it('should display error message for invalid email format', () => {
-    const inputInsertCorreo = containerSection.querySelector('.inputInsertCorreo');
-    const buttonRegister = containerSection.querySelector('.buttonRegister');
-    const errorMessageEmail = containerSection.querySelector('.listInput.error small');
+  it('have a formLogin', () => {
+    const containerLogin = document.createElement('div');
+    containerLogin.append(login());
 
-    inputInsertCorreo.value = 'invalid-email';
-    buttonRegister.click();
-
-    expect(errorMessageEmail.textContent).toBe('El campo debe ser llenado correctamente');
-    expect(inputInsertCorreo.parentElement.classList.contains('error')).toBe(true);
+    const haveAButton = containerLogin.querySelector('.formLogin');
+    expect(haveAButton).not.toBe(undefined);
   });
 
-  it('should display error message for empty password field', () => {
-    const inputInsertPassword = containerSection.querySelector('.inputInsertPassword');
-    const buttonRegister = containerSection.querySelector('.buttonRegister');
-    const errorMessagePassword = containerSection.querySelector('.listInput.error small');
+  it('Debe mostrar un error si los campos están vacíos', () => {
+    const containerLogin = document.createElement('div');
+    containerLogin.append(login());
 
-    inputInsertPassword.value = '';
-    buttonRegister.click();
+    const formLogin = containerLogin.querySelector('.formLogin');
+    // Simular envío del formulario con campos vacíos
+    formLogin.dispatchEvent(new Event('submit'));
 
-    expect(errorMessagePassword.textContent).toBe('El campo debe contener al menos 6 dígitos');
-    expect(inputInsertPassword.parentElement.classList.contains('error')).toBe(true);
+    const emailErrorMessage = containerLogin.querySelector('#email').parentElement.querySelector('span');
+    const passwordErrorMessage = containerLogin.querySelector('#password').parentElement.querySelector('span');
+
+    expect(emailErrorMessage.innerText).toBe('Los campos aún no han sido llenados');
+    expect(passwordErrorMessage.innerText).toBe('Los campos aún no han sido llenados');
   });
 
-  it('should register a user when all fields are valid', () => {
-    // Mock the registerUser function
-    const registerUser = jest.fn();
-    registerUser.mockResolvedValue(/* mock response */);
+  it('Debe redirigir al usuario a la página de inicio después de un inicio de sesión exitoso', async () => {
+    const containerLogin = document.createElement('div');
+    const navigateTo = jest.fn(); // Simular la redirección a la página de inicio
+    containerLogin.append(login(navigateTo));
 
-    // Set valid values for email and password fields
-    const inputInsertCorreo = containerSection.querySelector('.inputInsertCorreo');
-    const inputInsertPassword = containerSection.querySelector('.inputInsertPassword');
-    const buttonRegister = containerSection.querySelector('.buttonRegister');
-    inputInsertCorreo.value = 'test@example.com';
-    inputInsertPassword.value = 'password';
+    // Simular la resolución exitosa de la promesa de validación
+    jest.spyOn(auth, 'validateUserAndPasswordFireBase').mockImplementation(() => Promise.resolve(
+      {
+        user: {
+          uid: 'kssddd',
+          email: 'romulo@gmail.com',
+          emailVerified: false,
+          isAnonymous: false,
+          createdAt: '1684278697357',
+        },
+        operationType: 'signIn',
+      },
+    ));
 
-    // Call the register function with mock dependencies
-    buttonRegister.click();
+    const formLogin = containerLogin.querySelector('.formLogin');
+    const emailInput = containerLogin.querySelector('#email');
+    const passwordInput = containerLogin.querySelector('#password');
 
-    // Expect the registerUser function to be called with the correct email and password
-    expect(registerUser).toHaveBeenCalledWith('test@example.com', 'password');
+    // Rellenar los campos del formulario
+    emailInput.value = 'correo@valido.com';
+    passwordInput.value = '123456';
+
+    // Simular envío del formulario
+    formLogin.dispatchEvent(new Event('submit'));
+
+    // Esperar a que se resuelva la promesa de validación
+    await Promise.resolve();
+
+    expect(auth.validateUserAndPasswordFireBase).toHaveBeenCalledTimes(1);
+    expect(auth.validateUserAndPasswordFireBase).toHaveBeenLastCalledWith('correo@valido.com', '123456');
+
+    expect(navigateTo).toHaveBeenCalledTimes(1);
+    expect(navigateTo).toHaveBeenCalledWith('/home');
   });
 });

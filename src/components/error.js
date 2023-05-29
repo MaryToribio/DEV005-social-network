@@ -1,7 +1,9 @@
 export function error() {
   const section = document.createElement('section');
-  const title = document.createElement('h1');
-  title.textContent = 'Error 404 nai';
-  section.append(title);
+  const imgError = document.createElement('img');
+  imgError.classList.add('imgError');
+
+  imgError.src = 'http://gsr.com.mx/wp-content/uploads/2017/07/pagina-construccion.jpg';
+  section.append(imgError);
   return section;
 }

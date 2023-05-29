@@ -1,4 +1,3 @@
-// aqui exportaras las funciones que necesites (se borro los modulos que no se usan)
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
@@ -53,22 +52,19 @@ export const googleProvider = new GoogleAuthProvider();
 export const signInWithPopupGoogle = (provider) => signInWithPopup(auth, provider);
 
 // Función para iniciar Sesión
-
 export function validateUserAndPasswordFireBase(user, password) {
   return signInWithEmailAndPassword(auth, user, password);
 }
-console.log('promesa', signInWithEmailAndPassword);
 
-// Funión para cerrar cesión
+// Función para cerrar cesión
 export const signOutSeniorFace = (goToHome) => {
   signOut(auth)
     .then(() => goToHome)
     .catch((err) => { console.error(err); });
 };
-// funciones para publicar
 
+// funciones para publicar
 const db = getFirestore();
-console.log('verificando', auth);
 
 export const createCollection = (newPost, insertMessage) => {
   if (newPost !== '') {

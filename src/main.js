@@ -15,7 +15,7 @@ const myRoutes = [
   // { path: '/seniorFace', component: seniorFace },
   { path: '/home', component: home },
 ];
-const defaultMyRoutes = '/login';
+
 function navigateTo(hash) {
   const myRouterFind = myRoutes.find((itemRouter) => itemRouter.path === hash);
   console.log('prueba1', myRouterFind);
@@ -38,4 +38,4 @@ window.onpopstate = () => {
   navigateTo(window.location.pathname);
 };
 
-navigateTo(window.location.pathname || defaultMyRoutes);
+navigateTo(window.location.pathname || '/login');
